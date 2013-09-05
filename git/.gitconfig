@@ -1,0 +1,17 @@
+[user]
+	name = Javier Aguirre
+	email = contacto@javaguirre.net
+[core]
+	excludesfile = /home/javaguirre/.global-gitignore
+	editor = vim
+[alias]
+	compact = "!sh -c \"echo \\\"Before: `du -sh .git`\\\"; git count-objects; git gc --aggressive --prune; echo \\\"After: `du -sh .git`\\\"; git count-objects\""
+	ci = commit
+	st = status
+	co = checkout
+	br = branch
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[color]
+	ui = auto
+[push]
+	default = matching

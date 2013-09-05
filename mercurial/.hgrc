@@ -1,0 +1,10 @@
+[ui]
+username = Javier Aguirre <javi@javaguirre.net>
+verbose = True
+merge = merge
+
+[extensions]
+color =
+fetch =
+hgext.mq =
+rebase =

@@ -146,6 +146,7 @@ au BufRead,BufNewFile *.rb set tabstop=2
 au BufRead,BufNewFile *.rb set shiftwidth=2
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
+au BufRead,BufNewFile *.email set filetype=htmldjango
 
 " Abbr
 ab @@p javi@javaguirre.net

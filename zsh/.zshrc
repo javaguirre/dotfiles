@@ -34,8 +34,8 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 zstyle ':completion:*' special-dirs true
 export EDITOR="vim"
-DEFAULT_USER=javaguirre
-plugins=(git mercurial virtualenvwrapper battery django tmux)
+# DEFAULT_USER=javaguirre
+plugins=(git mercurial virtualenvwrapper django tmux vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 zstyle ':omz:module:tmux' auto-start 'yes'
@@ -44,6 +44,10 @@ zstyle ':omz:module:tmux' auto-start 'yes'
 autoload -U compinit promptinit
 compinit
 promptinit
+bindkey -v
+
+MODE_INDICATOR="%{$fg_bold[white]%}[%{$fg[green]%} NORMAL %{$fg_bold[white]%}]%{$reset_color%}"
+KEYTIMEOUT=1
 
 # Keychain SSH key reminder
 eval $(keychain --eval --agents ssh -Q --quiet id_rsa)

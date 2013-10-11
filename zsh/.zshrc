@@ -35,7 +35,7 @@ ZSH_THEME="agnoster"
 zstyle ':completion:*' special-dirs true
 export EDITOR="vim"
 # DEFAULT_USER=javaguirre
-plugins=(git mercurial virtualenvwrapper django tmux vi-mode)
+plugins=(git mercurial virtualenvwrapper django tmux vi-mode extract)
 
 source $ZSH/oh-my-zsh.sh
 zstyle ':omz:module:tmux' auto-start 'yes'

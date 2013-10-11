@@ -32,6 +32,7 @@ Bundle 'taikoa/vimwiki'
 Bundle 'yshh/htmljinja.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'pangloss/vim-javascript'
+Bundle 'wavded/vim-stylus'
 
 filetype plugin on
 filetype plugin indent on

@@ -33,6 +33,7 @@ Bundle 'yshh/htmljinja.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'pangloss/vim-javascript'
 Bundle 'wavded/vim-stylus'
+Bundle 'digitaltoad/vim-jade'
 
 filetype plugin on
 filetype plugin indent on
@@ -75,7 +76,8 @@ set wildignore+=*.pyc " Python byte code
 set wildignore+=*.stats " Pylint stats
 " END Wildmenu
 
-set gfn=Monaco\ for\ Powerline
+" set gfn=Monaco\ for\ Powerline
+set gfn=Hermit
 syntax on
 
 if has("gui_running")

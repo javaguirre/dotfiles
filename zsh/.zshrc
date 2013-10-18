@@ -35,7 +35,7 @@ ZSH_THEME="agnoster"
 zstyle ':completion:*' special-dirs true
 export EDITOR="vim"
 # DEFAULT_USER=javaguirre
-plugins=(git mercurial virtualenvwrapper django tmux vi-mode extract)
+plugins=(git mercurial virtualenvwrapper django tmux vi-mode extract colorize)
 
 source $ZSH/oh-my-zsh.sh
 zstyle ':omz:module:tmux' auto-start 'yes'
@@ -54,3 +54,5 @@ eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 source /home/javaguirre/.rvm/scripts/rvm
+
+alias cat=colorize

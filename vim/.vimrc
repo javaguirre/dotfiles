@@ -41,8 +41,8 @@ filetype plugin indent on
 scriptencoding utf-8
 set encoding=utf-8
 set visualbell
-" set ttyfast
 set autoread
+" set ttyfast
 " set textwidth=80
 
 set smartindent
@@ -64,8 +64,8 @@ set history=1000
 " END History
 
 " Wildmenu
-set wildmenu " Autocompletado de la linea de comandos.
-set wildmode=list:longest,full " Muestra una lista de todas las opciones.
+set wildmenu " Command line autocomplete
+set wildmode=list:longest,full " Show a list with all the options
 
 set wildignore+=.hg,.git,.svn " Version control
 set wildignore+=*.sw? " Vim swap files
@@ -80,14 +80,9 @@ set wildignore+=*.stats " Pylint stats
 set gfn=Hermit
 syntax on
 
-if has("gui_running")
-  colorscheme solarized
-  set bg=light
-else
-  colorscheme jellybeans
-  " colorscheme solarized
-  " set bg=dark
-endif
+colorscheme jellybeans
+" colorscheme solarized
+" set bg=dark
 
 "Python"
 set tabstop=4
@@ -179,6 +174,7 @@ xmap <C-c> <Plug>Commentary
 
 autocmd FileType python set commentstring=#\ %s
 autocmd FileType go set commentstring=//\ %s
+autocmd FileType php set commentstring=//\ %s
 
 " Ranger
 fun! RangerChooser()

@@ -34,6 +34,7 @@ Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'pangloss/vim-javascript'
 Bundle 'wavded/vim-stylus'
 Bundle 'digitaltoad/vim-jade'
+Bundle 'javaguirre/VimDebugger'
 
 filetype plugin on
 filetype plugin indent on
@@ -198,3 +199,6 @@ nmap <Leader>wdg <Plug>VimwikiDiaryGenerateLinks
 nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 let g:php_cs_fixer_path = "~/Proyectos/php/php-cs-fixer.phar"
 let g:php_cs_fixer_dry_run = 1
+
+" VimDebugger
+let g:vim_debugger_port = 9099

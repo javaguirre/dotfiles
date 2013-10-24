@@ -2,7 +2,7 @@
 	name = Javier Aguirre
 	email = contacto@javaguirre.net
 [core]
-	excludesfile = /home/javaguirre/.global-gitignore
+	excludesfile = ~/.global-gitignore
 	editor = vim
 [alias]
 	compact = "!sh -c \"echo \\\"Before: `du -sh .git`\\\"; git count-objects; git gc --aggressive --prune; echo \\\"After: `du -sh .git`\\\"; git count-objects\""

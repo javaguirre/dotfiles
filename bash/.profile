@@ -20,7 +20,7 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-[[ -s /home/javaguirre/.nvm/nvm.sh ]] && . /home/javaguirre/.nvm/nvm.sh # This loads NVM
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 
 APPENGINE_PATH="$HOME/apps/google_appengine"
 ANDROID_SDK="$HOME/apps/android-sdk-linux"

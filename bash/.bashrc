@@ -32,9 +32,6 @@ function send_changes { git log -n $1 --oneline --stat --no-merges | mail -s "$2
 function git_count { git log --numstat --pretty="%H" --author="$1" | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("+%d, -%d\n", plus, minus)}'; }
 #function replace_class_names { for filename in *$1*; do echo mv \"$filename\" \"${filename//$1/$2}\"; done | /bin/bash }
 
-# added by duckpan installer
-eval $(perl -I/home/javaguirre/perl5/lib/perl5 -Mlocal::lib)
-
 # for tmux: export 256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 

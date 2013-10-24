@@ -53,6 +53,6 @@ KEYTIMEOUT=1
 eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-source /home/javaguirre/.rvm/scripts/rvm
+source $HOME/.rvm/scripts/rvm
 
 alias cat=colorize

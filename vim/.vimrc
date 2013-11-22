@@ -35,6 +35,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'wavded/vim-stylus'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'javaguirre/VimDebugger'
+Bundle 'vim-scripts/TwitVim'
 
 filetype plugin on
 filetype plugin indent on
@@ -202,3 +203,8 @@ let g:php_cs_fixer_dry_run = 1
 
 " VimDebugger
 let g:vim_debugger_port = 9099
+
+" TwitVim
+let twitvim_enable_python3 = 1
+let twitvim_browser_cmd = 'firefox'
+let twitvim_count = 200

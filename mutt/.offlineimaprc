@@ -1,6 +1,6 @@
 [general]
 ui = quiet
-accounts = gmail, javaguirre, contacto, hello, taikoa
+accounts = gmail, javaguirre, contacto, taikoa
 pythonfile = /home/javaguirre/.offlineimap.py
 
 [Account gmail]
@@ -15,10 +15,6 @@ remoterepository = javaguirre-Remote
 localrepository = contacto-Local
 remoterepository = contacto-Remote
 
-[Account hello]
-localrepository = hello-Local
-remoterepository = hello-Remote
-
 [Account taikoa]
 localrepository = taikoa-Local
 remoterepository = taikoa-Remote
@@ -26,10 +22,6 @@ remoterepository = taikoa-Remote
 [Repository taikoa-Local]
 type = Maildir
 localfolders = ~/Mail/taikoa
-
-[Repository hello-Local]
-type = Maildir
-localfolders = ~/Mail/hello
 
 [Repository gmail-Local]
 type = Maildir
@@ -42,13 +34,6 @@ localfolders = ~/Mail/javaguirre
 [Repository contacto-Local]
 type = Maildir
 localfolders = ~/Mail/contacto
-
-[Repository hello-Remote]
-type = Gmail
-remoteuser = hello@taikoa.net
-remotepasseval = get_password("offlineimap", "hello@taikoa.net")
-realdelete = no
-cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 
 [Repository taikoa-Remote]
 type = Gmail

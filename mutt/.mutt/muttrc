@@ -124,7 +124,7 @@ hdr_order from: to: cc: date: subject:  # and in this order
 # SMTP
 set reverse_name
 set my_user = "javi@javaguirre.net"
-alternates javaguirre@wadobo.com javaguirre85@gmail.com contacto@javaguirre.net hello@taikoa.net javaguirre@taikoa.net
+alternates javaguirre@wadobo.com javaguirre85@gmail.com contacto@javaguirre.net javaguirre@taikoa.net
 set smtp_url="smtp://$my_user:$my_pw_javaguirre@smtp.gmail.com/"
 set sendmail_wait = 0
 unset record
@@ -140,13 +140,11 @@ set spoolfile = "+javaguirre/INBOX"
 # Mailboxes to show in the sidebar.
 mailboxes +Javaguirre \
           +selltag \
-          +Gul \
           +Sent \
           +Gmail \
           +Contacto \
           +Bitbucket \
           +Travis \
-          +Hello \
           +Taikoa \
 
 # Other special folders.

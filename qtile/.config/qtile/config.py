@@ -2,7 +2,7 @@ import time
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
 
 mod = "mod1"
 
@@ -57,7 +57,6 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "t", lazy.nextlayout()),
     Key([mod, "shift"], "c", lazy.window.kill()),
-
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod], "p", lazy.spawncmd()),
     Key([mod, "shift"], "q", lazy.shutdown())
@@ -104,6 +103,7 @@ screens = [
                 widget.Prompt(**font_options),
                 widget.WindowName(**font_options),
                 widget.TextBox("", name="default", **font_options),
+                widget.Sep(foreground='ffffff', **font_options),
                 widget.Battery(**font_options),
                 widget.Sep(foreground='ffffff', **font_options),
                 widget.ThermalSensor(**font_options),
@@ -113,7 +113,7 @@ screens = [
                 widget.Systray(),
                 widget.Clock('%H:%M %a, %d-%m-%Y', **font_options),
             ],
-            20,
+            20
         ),
     ),
 ]
@@ -131,3 +131,10 @@ mouse = [
 ]
 auto_fullscreen = True
 widget_defaults = {}
+
+
+# Hooks
+@hook.subscribe.startup
+def runner():
+    import subprocess
+    subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])

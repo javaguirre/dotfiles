@@ -2,6 +2,7 @@
 username = Javier Aguirre <javi@javaguirre.net>
 verbose = True
 merge = merge
+ignore = ~/.hgignore
 
 [extensions]
 color =

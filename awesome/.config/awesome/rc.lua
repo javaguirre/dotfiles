@@ -123,12 +123,14 @@ weather = wibox.widget.textbox()
 thermal = wibox.widget.textbox()
 
 vicious.register(datewidget, vicious.widgets.date, "%a %b %d, %R", 60)
-vicious.register(memwidget, vicious.widgets.mem, "$2MB | ", 13)
+vicious.register(memwidget, vicious.widgets.mem, "$2MB", 13)
 vicious.register(cpuwidget, vicious.widgets.cpu, " $1% ")
-vicious.register(volume, vicious.widgets.volume, "V:$1 ", 120, "Master")
+vicious.register(volume, vicious.widgets.volume, "V:$1", 120, "Master")
 vicious.register(battery, vicious.widgets.bat, " $1$2%", 120, "BAT0")
 vicious.register(weather, vicious.widgets.weather, "${tempc}ºC ", 1200, "EHRD")
-vicious.register(thermal, vicious.widgets.thermal, "| $1ºC", 120, "thermal_zone0")
+vicious.register(thermal, vicious.widgets.thermal, "$1ºC", 120, "thermal_zone0")
+separator = wibox.widget.textbox()
+separator:set_text(" | ")
 
 -- {{{ Wibox
 -- Create a textclock widget
@@ -213,10 +215,12 @@ for s = 1, screen.count() do
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(weather)
     right_layout:add(volume)
+    right_layout:add(separator)
     right_layout:add(thermal)
     right_layout:add(battery)
     right_layout:add(cpuwidget)
     right_layout:add(memwidget)
+    right_layout:add(separator)
     right_layout:add(datewidget)
     right_layout:add(mylayoutbox[s])
 

@@ -9,3 +9,7 @@ color =
 fetch =
 hgext.mq =
 rebase =
+
+[alias]
+__mystatus = status
+st = !hg __mystatus $($HG root) $HG_ARGS

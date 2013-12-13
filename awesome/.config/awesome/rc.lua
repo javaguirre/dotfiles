@@ -122,7 +122,7 @@ battery = wibox.widget.textbox()
 weather = wibox.widget.textbox()
 thermal = wibox.widget.textbox()
 
-vicious.register(datewidget, vicious.widgets.date, "%a %b %d, %R", 60)
+vicious.register(datewidget, vicious.widgets.date, "%a %b %d, %R ", 60)
 vicious.register(memwidget, vicious.widgets.mem, "$2MB", 13)
 vicious.register(cpuwidget, vicious.widgets.cpu, " $1% ")
 vicious.register(volume, vicious.widgets.volume, "V:$1", 120, "Master")

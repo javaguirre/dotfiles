@@ -280,6 +280,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift" }, "p", function () awful.util.spawn("pavucontrol") end),
     awful.key({ modkey, "Shift" }, "b", function () awful.util.spawn("firefox-nightly") end),
     awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("slock") end),
+    awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("import -window root -delay 200 /home/javaguirre/screenshot.png") end),
     awful.key({ modkey, "Shift" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 

@@ -1,5 +1,5 @@
 alias ls='ls --color=auto'
-alias grep='grep --colour -n'
+alias grep='grep --colour'
 alias cleanmails='sudo postsuper -d ALL'
 alias shutit='sudo shutdown -h now'
 alias qserver="python2 -m SimpleHTTPServer"

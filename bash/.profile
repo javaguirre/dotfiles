@@ -30,7 +30,7 @@ ANDROID_NDK="$HOME/apps/android-ndk-r8"
 export NODE_MODULES="$HOME/node_modules/.bin"
 export COFFEEPATH=/usr/lib/coffee-script/bin/
 export GOPATH=$HOME/Proyectos/go
-export GOROOT=/usr/lib/go
+export GOROOT=/usr/local/go
 export PYTHONSTARTUP=$HOME/.pythonrc
 export GWT_PATH="$HOME/apps/gwt-2.5.0.rc1"
 export TMUXIFIERPATH="$HOME/.tmuxifier/bin"
@@ -47,7 +47,3 @@ source /usr/bin/virtualenvwrapper.sh
 export WORKON_HOME="$HOME/.virtualenvs"
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
-
-# Tmuxifier
-export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
-eval "$(tmuxifier init -)"

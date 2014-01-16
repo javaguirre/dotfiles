@@ -29,20 +29,21 @@ Bundle 'taikoa/vimwiki'
 " Bundle 'eglimi/vim-rust'
 " Bundle 'timcharper/textile.vim'
 " Bundle 'nsf/gocode'
+" Bundle 'javaguirre/VimDebugger'
 Bundle 'yshh/htmljinja.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'pangloss/vim-javascript'
 Bundle 'wavded/vim-stylus'
 Bundle 'digitaltoad/vim-jade'
-Bundle 'javaguirre/VimDebugger'
 Bundle 'vim-scripts/TwitVim'
+Bundle 'rainux/vim-vala'
 
 filetype plugin on
 filetype plugin indent on
 
 scriptencoding utf-8
 set encoding=utf-8
-set visualbell
+set novisualbell
 set autoread
 " set ttyfast
 " set textwidth=80
@@ -125,6 +126,7 @@ nmap <Leader>t "=strftime("%Y-%m-%d %H:%M")<CR>P
 nmap <Leader>d "=strftime("%Y-%m-%d")<CR>p
 map <Leader>h :nohlsearch<CR>
 nmap <Leader>; :CtrlPBuffer<CR>
+
 " Themes Bright and Dark
 nmap <Leader>td :colorscheme jellybeans<CR>
 nmap <Leader>tl :colorscheme solarized<CR>:set bg=dark<CR>
@@ -208,3 +210,7 @@ let g:vim_debugger_port = 9099
 let twitvim_enable_python3 = 1
 let twitvim_browser_cmd = 'firefox'
 let twitvim_count = 200
+
+" Vim GUI
+set guioptions -=m
+set guioptions -=T

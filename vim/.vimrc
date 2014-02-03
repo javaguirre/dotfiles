@@ -109,13 +109,6 @@ autocmd BufWinLeave * call clearmatches()
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " match OverLength /\%81v.\+/
 
-" relative number
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
-
-
 "Keys"
 nmap <F3> :TlistToggle<CR>
 imap <F3> :TlistToggle<CR>

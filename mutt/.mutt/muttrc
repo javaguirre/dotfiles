@@ -141,10 +141,6 @@ set spoolfile = "+javaguirre/INBOX"
 mailboxes +Javaguirre \
           +selltag \
           +Sent \
-          +Gmail \
-          +Contacto \
-          +Bitbucket \
-          +Travis \
           +Taikoa \
 
 # Other special folders.

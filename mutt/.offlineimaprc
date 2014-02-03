@@ -1,19 +1,11 @@
 [general]
 ui = quiet
-accounts = gmail, javaguirre, contacto, taikoa
+accounts = javaguirre, taikoa
 pythonfile = /home/javaguirre/.offlineimap.py
-
-[Account gmail]
-localrepository = gmail-Local
-remoterepository = gmail-Remote
 
 [Account javaguirre]
 localrepository = javaguirre-Local
 remoterepository = javaguirre-Remote
-
-[Account contacto]
-localrepository = contacto-Local
-remoterepository = contacto-Remote
 
 [Account taikoa]
 localrepository = taikoa-Local
@@ -23,29 +15,14 @@ remoterepository = taikoa-Remote
 type = Maildir
 localfolders = ~/Mail/taikoa
 
-[Repository gmail-Local]
-type = Maildir
-localfolders = ~/Mail/gmail
-
 [Repository javaguirre-Local]
 type = Maildir
 localfolders = ~/Mail/javaguirre
-
-[Repository contacto-Local]
-type = Maildir
-localfolders = ~/Mail/contacto
 
 [Repository taikoa-Remote]
 type = Gmail
 remoteuser = javaguirre@taikoa.net
 remotepasseval = get_password("offlineimap", "javaguirre@taikoa.net")
-realdelete = no
-cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
-
-[Repository gmail-Remote]
-type = Gmail
-remoteuser = javaguirre85@gmail.com
-remotepasseval = get_password("offlineimap", "javaguirre85@gmail.com")
 realdelete = no
 cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 
@@ -56,15 +33,3 @@ remoteuser = javi@javaguirre.net
 realdelete = no
 remotepasseval = get_password("offlineimap", "javi@javaguirre.net")
 cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
-
-[Repository contacto-Remote]
-type = Gmail
-remoteuser = contacto@javaguirre.net
-#remotepass = pass
-realdelete = no
-remotepasseval = get_password("offlineimap", "contacto@javaguirre.net")
-cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
-
-nametrans = lambda folder: re.sub('^inbox$', 'INBOX',
-                           re.sub(' +', '_',
-                           re.sub(r'.*/(.*)$', r'\1', folder). lower()))

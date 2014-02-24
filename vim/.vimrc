@@ -7,7 +7,8 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Bundle 'javaguirre/UltiSnips'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mileszs/ack.vim'
@@ -20,23 +21,16 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'nvie/vim-flake8'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'javaguirre/UltiSnips'
 Bundle 'Rykka/colorv.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'taikoa/vimwiki'
-" Bundle 'tclem/vim-arduino'
-" Bundle 'Yggdroot/indentLine'
-" Bundle 'eglimi/vim-rust'
-" Bundle 'timcharper/textile.vim'
-" Bundle 'nsf/gocode'
-" Bundle 'javaguirre/VimDebugger'
 Bundle 'yshh/htmljinja.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'pangloss/vim-javascript'
 Bundle 'wavded/vim-stylus'
 Bundle 'digitaltoad/vim-jade'
-Bundle 'vim-scripts/TwitVim'
 Bundle 'rainux/vim-vala'
+Bundle 'mustache/vim-mustache-handlebars'
 
 filetype plugin on
 filetype plugin indent on
@@ -79,7 +73,6 @@ set wildignore+=*.pyc " Python byte code
 set wildignore+=*.stats " Pylint stats
 " END Wildmenu
 
-" set gfn=Monaco\ for\ Powerline
 set gfn=Hermit
 syntax on
 
@@ -98,6 +91,63 @@ set encoding=utf-8
 set laststatus=2
 set t_Co=256
 set sts=4
+
+"statusline
+
+" first, enable status line always
+set laststatus=2
+
+" now set it up to change the status line based on mode
+if version >= 700
+  au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=blue
+  au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
+endif
+
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi statusline guibg=blue
+  elseif a:mode == 'r'
+    hi statusline guibg=magenta
+  else
+    hi statusline guibg=red
+  endif
+endfunction
+
+function! SetMode()
+  let s:mode=mode()
+
+  if s:mode == 'i'
+    return 'I'
+  elseif s:mode == 'r'
+    return 'R'
+  else
+    return 'N'
+  endif
+endfunction
+
+function! HasPaste()
+    if &paste
+        return 'PASTE'
+    else
+        return ''
+    endif
+endfunction
+
+set statusline =%{HasPaste()}
+set statusline +=\ %{SetMode()}
+set statusline +=\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}
+set statusline +=\ %F
+set statusline +=\ %y
+set statusline +=\ %m
+set statusline +=%5*%{&ff}%*
+set statusline +=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%2*/%L%*               "total lines
+set statusline +=%1*%4v\ %*             "virtual column number"
+" default the statusline to green when entering Vim
+hi statusline guibg=green
+
+" end statusline
 
 "White spaces"
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -161,10 +211,6 @@ let g:ctrlp_switch_buffer = 0
 let g:colorv_cache_file=$HOME.'/.vim/tmp/vim_colorv_cache'
 let g:colorv_cache_fav=$HOME.'/.vim/tmp/vim_colorv_cache_fav'
 
-" IndentLine
-" let g:indentLine_char = '¦'
-" let g:indentLine_color_term = 239
-
 " Commentary
 nmap <C-c> <Plug>CommentaryLine
 xmap <C-c> <Plug>Commentary
@@ -173,37 +219,8 @@ autocmd FileType python set commentstring=#\ %s
 autocmd FileType go set commentstring=//\ %s
 autocmd FileType php set commentstring=//\ %s
 
-" Ranger
-fun! RangerChooser()
-    exec "silent !ranger --choosefile=/tmp/chosenfile " . expand("%:p:h")
-    if filereadable('/tmp/chosenfile')
-        exec 'edit ' . system('cat /tmp/chosenfile')
-        call system('rm /tmp/chosenfile')
-    endif
-    redraw!
-endfun
-map <Leader>ra :call RangerChooser()<CR>
-
 " Vimwiki
-
 let g:vimwiki_hl_cb_checked=1
 let g:vimwiki_hl_headers=1
 nmap <Leader>wd <Plug>VimwikiDiaryIndex
 nmap <Leader>wdg <Plug>VimwikiDiaryGenerateLinks
-
-" PHP Cs Fixer
-nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
-let g:php_cs_fixer_path = "~/Proyectos/php/php-cs-fixer.phar"
-let g:php_cs_fixer_dry_run = 1
-
-" VimDebugger
-let g:vim_debugger_port = 9099
-
-" TwitVim
-let twitvim_enable_python3 = 1
-let twitvim_browser_cmd = 'firefox'
-let twitvim_count = 200
-
-" Vim GUI
-set guioptions -=m
-set guioptions -=T

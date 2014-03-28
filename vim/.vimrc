@@ -32,7 +32,8 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'rainux/vim-vala'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'hsanson/vim-android'
-Bundle 'ekalinin/Dockerfile.vim'
+" Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'rodjek/vim-puppet'
 
 filetype plugin on
 filetype plugin indent on
@@ -78,9 +79,13 @@ set wildignore+=*.stats " Pylint stats
 set gfn=FantasqueSansMono\ 11
 syntax on
 
-colorscheme jellybeans
-" colorscheme solarized
-" set bg=dark
+try
+    colorscheme jellybeans
+    " colorscheme solarized
+    " set bg=dark
+catch /^Vim\%((\a\+)\)\=:E185/
+    " deal with it
+endtry
 
 "Python"
 set tabstop=4
@@ -165,6 +170,7 @@ xmap <C-c> <Plug>Commentary
 autocmd FileType python set commentstring=#\ %s
 autocmd FileType go set commentstring=//\ %s
 autocmd FileType php set commentstring=//\ %s
+autocmd FileType puppet set commentstring=#\ %s
 
 " Vimwiki
 let g:vimwiki_hl_cb_checked=1

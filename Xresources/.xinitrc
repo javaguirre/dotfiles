@@ -1,22 +1,15 @@
 #!/bin/sh
 
-DEFAULT_SESSION=dwm
+BG_IMG="$HOME/Imagenes/arch_wallpaper.png"
 
-case $1 in
-gnome)
-    exec gnome-session
-    ;;
-qtile)
-    setxkbmap es &amp;
-    feh --bg-scale ~/Imagenes/arch_wallpaper.png
-    exec qtile
-    ;;
-*)
+if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+    eval "$(dbus-launch --sh-syntax --exit-with-session)"
+fi
 
-    setxkbmap es &amp;
-    feh --bg-scale ~/Imagenes/arch_wallpaper.png
-    dwmstatus &amp;
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-    exec $DEFAULT_SESSION
-    ;;
-esac
+feh --bg-scale $BG_IMG
+dwmstatus &amp;
+setxkbmap en_US -option ctrl:nocaps &amp;
+
+exec dwm

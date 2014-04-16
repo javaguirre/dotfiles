@@ -25,6 +25,7 @@ fi
 APPENGINE_PATH="$HOME/apps/google_appengine"
 ANDROID_SDK="$HOME/apps/android-sdk-linux"
 ANDROID_NDK="$HOME/apps/android-ndk-r8"
+export ANDROID_HOME=/home/javaguirre/apps/android-sdk-linux/
 #JDK_PATH="/usr/lib/jvm/jdk1.7.0"
 #export YEOMAN="$HOME/node_modules/yeoman/bin"
 export NODE_MODULES="$HOME/node_modules/.bin"
@@ -35,7 +36,8 @@ export PYTHONSTARTUP=$HOME/.pythonrc
 export GWT_PATH="$HOME/apps/gwt-2.5.0.rc1"
 export TMUXIFIERPATH="$HOME/.tmuxifier/bin"
 export PYTHONPATH=$PYTHONPATH:"$HOME/Proyectos/django-apps":"$HOME/Proyectos/gigas/":"$HOME/Proyectos/python/sabrosous/sabrosous":$APPENGINE_PATH
-export PATH=$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$ANDROID_SDK/tools":"$ANDROID_SDK/platform-tools":"$GOROOT/bin":"$ANDROID_NDK":"$GWT_PATH":"$COFFEEPATH":"$NODE_MODULES":"$GOPATH/bin":"$TMUXIFIERPATH"
+export RBENV="$HOME/.rbenv/bin"
+export PATH=$RBENV:$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$ANDROID_SDK/tools":"$ANDROID_SDK/platform-tools":"$GOROOT/bin":"$ANDROID_NDK":"$GWT_PATH":"$COFFEEPATH":"$NODE_MODULES":"$GOPATH/bin":"$TMUXIFIERPATH"
 export JAVA_HOME='/usr'
 export JYTHONPATH=$JYTHONPATH:$JDK_PATH
 export CLASSPATH=$CLASSPATH:"$JDK_PATH/lib/tools.jar":"$HOME/Proyectos/java/myexperiments"
@@ -47,3 +49,5 @@ source /usr/bin/virtualenvwrapper.sh
 export WORKON_HOME="$HOME/.virtualenvs"
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
+
+eval "$(rbenv init -)"

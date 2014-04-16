@@ -51,6 +51,4 @@ KEYTIMEOUT=1
 
 # Keychain SSH key reminder
 eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-source $HOME/.rvm/scripts/rvm
+eval "$(rbenv init -)"

@@ -22,27 +22,17 @@ if [ -d "$HOME/bin" ] ; then
 fi
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 
-APPENGINE_PATH="$HOME/apps/google_appengine"
 ANDROID_SDK="$HOME/apps/android-sdk-linux"
 ANDROID_NDK="$HOME/apps/android-ndk-r8"
 export ANDROID_HOME=/home/javaguirre/apps/android-sdk-linux/
-#JDK_PATH="/usr/lib/jvm/jdk1.7.0"
-#export YEOMAN="$HOME/node_modules/yeoman/bin"
 export NODE_MODULES="$HOME/node_modules/.bin"
 export COFFEEPATH=/usr/lib/coffee-script/bin/
 export GOPATH=$HOME/Proyectos/go
-export GOROOT=/usr/local/go
+export GOROOT=/usr/lib/go
 export PYTHONSTARTUP=$HOME/.pythonrc
-export GWT_PATH="$HOME/apps/gwt-2.5.0.rc1"
-export TMUXIFIERPATH="$HOME/.tmuxifier/bin"
-export PYTHONPATH=$PYTHONPATH:"$HOME/Proyectos/django-apps":"$HOME/Proyectos/gigas/":"$HOME/Proyectos/python/sabrosous/sabrosous":$APPENGINE_PATH
 export RBENV="$HOME/.rbenv/bin"
-export PATH=$RBENV:$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$ANDROID_SDK/tools":"$ANDROID_SDK/platform-tools":"$GOROOT/bin":"$ANDROID_NDK":"$GWT_PATH":"$COFFEEPATH":"$NODE_MODULES":"$GOPATH/bin":"$TMUXIFIERPATH"
+export PATH=$RBENV:$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$ANDROID_SDK/tools":"$ANDROID_SDK/platform-tools":"$GOROOT/bin":"$ANDROID_NDK":"$GWT_PATH":"$COFFEEPATH":"$NODE_MODULES":"$GOPATH/bin"
 export JAVA_HOME='/usr'
-export JYTHONPATH=$JYTHONPATH:$JDK_PATH
-export CLASSPATH=$CLASSPATH:"$JDK_PATH/lib/tools.jar":"$HOME/Proyectos/java/myexperiments"
-export ANDROID_SRC="$HOME/Proyectos/android/sl4a-src"
-export CHROME_BIN="chromium"
 
 # virtualenv
 source /usr/bin/virtualenvwrapper.sh

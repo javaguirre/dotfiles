@@ -50,5 +50,10 @@ MODE_INDICATOR="%{$fg_bold[white]%}[%{$fg[green]%} NORMAL %{$fg_bold[white]%}]%{
 KEYTIMEOUT=1
 
 # Keychain SSH key reminder
-eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
-eval "$(rbenv init -)"
+if command -v keychain >/dev/null; then
+  eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
+fi
+
+if command -v rbenv >/dev/null; then
+  eval "$(rbenv init -)"
+fi

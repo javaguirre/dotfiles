@@ -34,6 +34,8 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'hsanson/vim-android'
 " Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'rodjek/vim-puppet'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'javaguirre/cello.vim'
 
 filetype plugin on
 filetype plugin indent on
@@ -171,6 +173,7 @@ autocmd FileType python set commentstring=#\ %s
 autocmd FileType go set commentstring=//\ %s
 autocmd FileType php set commentstring=//\ %s
 autocmd FileType puppet set commentstring=#\ %s
+au BufRead,BufNewFile Gomfile setlocal ft=ruby
 
 " Vimwiki
 let g:vimwiki_hl_cb_checked=1

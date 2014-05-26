@@ -31,7 +31,8 @@ export GOPATH=$HOME/Proyectos/go
 export GOROOT=/usr/lib/go
 export PYTHONSTARTUP=$HOME/.pythonrc
 export RBENV="$HOME/.rbenv/bin"
-export PATH=$RBENV:$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$ANDROID_SDK/tools":"$ANDROID_SDK/platform-tools":"$GOROOT/bin":"$ANDROID_NDK":"$GWT_PATH":"$COFFEEPATH":"$NODE_MODULES":"$GOPATH/bin"
+export CASKPATH="/home/javaguirre/.cask/bin"
+export PATH=$RBENV:$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$ANDROID_SDK/tools":"$ANDROID_SDK/platform-tools":"$GOROOT/bin":"$ANDROID_NDK":"$GWT_PATH":"$COFFEEPATH":"$NODE_MODULES":"$GOPATH/bin:$CASKPATH"
 export JAVA_HOME='/usr'
 
 # virtualenv

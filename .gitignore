@@ -1,2 +1,4 @@
 *.sw[op]
 *.pyc
+.cask/
+auto-save-list/

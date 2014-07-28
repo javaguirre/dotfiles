@@ -9,7 +9,7 @@ alias titanium='$HOME/Proyectos/titanium/titanium/bin/titanium'
 alias searchtech='ruby $HOME/Proyectos/ruby/myexperiments/searchtech.rb'
 alias eclipse='$HOME/apps/eclipse/eclipse'
 #alias offlineimap='$HOME/Proyectos/python/offlineimap/bin/offlineimap'
-alias mutt='cd ~/Desktop && workon mutt && mutt'
+alias mutt='cd ~/Desktop && source ~/.virtualenvs/mutt/bin/activate && mutt'
 alias record='gst-launch-0.10 pulsesrc device=alsa_input.pci-0000_00_1b.0.analog-stereo ! adder name=mix ! audioconvert ! vorbisenc ! oggmux ! filesink location=20121126-095037.ogg { pulsesrc
                 device=alsa_output.pci-0000_00_1b.0.analog-stereo.monitor ! mix. }'
 alias emacs='emacs -nw'

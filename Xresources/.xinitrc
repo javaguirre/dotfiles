@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BG_IMG="$HOME/Imagenes/arch_wallpaper.png"
+BG_IMG="$HOME/arch_wallpaper.png"
 
 if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
     eval "$(dbus-launch --sh-syntax --exit-with-session)"
@@ -13,5 +13,6 @@ xset -dpms
 xset s off
 dwmstatus &amp;
 setxkbmap en_US -option ctrl:nocaps &amp;
+pulseaudio --start
 
 exec dwm

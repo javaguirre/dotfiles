@@ -2,6 +2,30 @@
 (cask-initialize)
 (require 'pallet)
 
+;; Helm
+(helm-mode 1)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+;; Yasnippet
+(require 'yasnippet)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/.cask/24.3.1/elpa/yasnippet-20140821.38/snippets"
+        "~/.emacs.d/snippets"))
+(yas-global-mode 1)
+
+
+;;; auto complete mod
+;;; should be loaded after yasnippet so that they can work together
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+;;; set the trigger key so that it can work together with yasnippet on tab key,
+;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
+;;; activate, otherwise, auto-complete will
+(ac-set-trigger-key "TAB")
+(ac-set-trigger-key "<tab>")
+
 (require 'evil)
 (global-evil-leader-mode)
 (evil-leader/set-key
@@ -38,6 +62,9 @@
 ;; line number space
 (setq linum-format "%3d ")
 
+;; col-highlight
+(setq column-highlight-mode t)
+
 ;; jk for evil
 (setq key-chord-two-keys-delay 0.5)
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
@@ -59,14 +86,6 @@
   (setq standard-indent 4)
   (setq indent-tabs-mode nil)))
 
-;; Go
-(add-to-list 'load-path "~/Proyectos/go/src/github.com/dougm/goflymake")
-(require 'go-flymake)
-
-;; PHP
-(require 'flymake-php)
-(add-hook 'php-mode-hook 'flymake-php-load)
-
 ;; Org
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
@@ -75,6 +94,9 @@
 
 ;; backup files
 (setq make-backup-files nil)
+
+;; Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Web mode
 (require 'web-mode)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Symfony debugger
+# key: dump
+# --
+\Doctrine\Common\Util\Debug::dump($0);

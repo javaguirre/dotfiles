@@ -35,7 +35,7 @@ DISABLE_AUTO_UPDATE="true"
 zstyle ':completion:*' special-dirs true
 export EDITOR="vim"
 # DEFAULT_USER=javaguirre
-plugins=(git mercurial virtualenvwrapper django tmux extract colorize)
+plugins=(git mercurial django tmux extract colorize)
 
 source $ZSH/oh-my-zsh.sh
 zstyle ':omz:module:tmux' auto-start 'yes'
@@ -44,7 +44,8 @@ zstyle ':omz:module:tmux' auto-start 'yes'
 autoload -U compinit promptinit
 compinit
 promptinit
-# bindkey -v
+bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 MODE_INDICATOR="%{$fg_bold[white]%}[%{$fg[green]%} NORMAL %{$fg_bold[white]%}]%{$reset_color%}"
 KEYTIMEOUT=1
@@ -52,8 +53,4 @@ KEYTIMEOUT=1
 # Keychain SSH key reminder
 if command -v keychain >/dev/null; then
   eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
-fi
-
-if command -v rbenv >/dev/null; then
-  eval "$(rbenv init -)"
 fi

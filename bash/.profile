@@ -36,9 +36,7 @@ export PATH=$RBENV:$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant
 export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
 
 # virtualenv
-source /usr/bin/virtualenvwrapper.sh
-export WORKON_HOME="$HOME/.virtualenvs"
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
-
-eval "$(rbenv init -)"
+# source /usr/bin/virtualenvwrapper.sh
+# export WORKON_HOME="$HOME/.virtualenvs"
+# export PIP_VIRTUALENV_BASE=$WORKON_HOME
+# export PIP_RESPECT_VIRTUALENV=true

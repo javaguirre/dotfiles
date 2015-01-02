@@ -49,7 +49,7 @@ xterm*AllowIconInput: on
 xterm*AutoRaise: on
 xterm*termtype: xterm
 xterm*vt100.geometry: 100x25+0+0
-xterm*FaceName: Monaco\ for\ Powerline
+xterm*FaceName: Hermit
 xterm*FaceSize: 10
 xterm*visualBell: True
 xterm*ttyModes: intr ^c erase ^h susp ^@ dsusp ^@ kill ^u eof ^d

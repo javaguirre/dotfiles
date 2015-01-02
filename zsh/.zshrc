@@ -54,3 +54,11 @@ KEYTIMEOUT=1
 if command -v keychain >/dev/null; then
   eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
 fi
+
+if [ -n "$TMUX" ]; then
+    export TERM=screen-256color
+else
+    export TERM=xterm-256color
+fi
+
+unset GREP_OPTIONS

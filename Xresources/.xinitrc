@@ -14,5 +14,6 @@ xset s off
 dwmstatus &amp;
 setxkbmap en_US -option ctrl:nocaps &amp;
 pulseaudio --start
+emacs -nw --daemon
 
 exec dwm

@@ -10,5 +10,6 @@ alias eclipse='$HOME/apps/eclipse/eclipse'
 alias mutt='cd ~/Desktop && source ~/.virtualenvs/mutt/bin/activate && mutt'
 alias record='gst-launch-0.10 pulsesrc device=alsa_input.pci-0000_00_1b.0.analog-stereo ! adder name=mix ! audioconvert ! vorbisenc ! oggmux ! filesink location=20121126-095037.ogg { pulsesrc
                 device=alsa_output.pci-0000_00_1b.0.analog-stereo.monitor ! mix. }'
-alias emacs='emacs -nw'
+# alias emacs='emacs -nw'
+alias e='emacsclient -nw'
 alias addon-sdk="cd /opt/addon-sdk && source bin/activate; cd -"

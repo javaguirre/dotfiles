@@ -39,19 +39,3 @@
 ! white
 *color7: t_comment
 *color15: t_foreground
-
-xterm*Foreground: white
-xterm*Background: black
-xterm*ScrollBar: on
-xterm*TitleBar: on
-xterm*TextUnderIcon: on
-xterm*AllowIconInput: on
-xterm*AutoRaise: on
-xterm*termtype: xterm
-xterm*vt100.geometry: 100x25+0+0
-xterm*FaceName: Hermit
-xterm*FaceSize: 10
-xterm*visualBell: True
-xterm*ttyModes: intr ^c erase ^h susp ^@ dsusp ^@ kill ^u eof ^d
-xterm*pointerShape:             arrow
-xterm*pointerColor:             white

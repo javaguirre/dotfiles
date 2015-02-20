@@ -35,7 +35,7 @@ DISABLE_AUTO_UPDATE="true"
 zstyle ':completion:*' special-dirs true
 export EDITOR="vim"
 # DEFAULT_USER=javaguirre
-plugins=(git mercurial django tmux extract colorize)
+plugins=(git mercurial django tmux extract colorize zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 zstyle ':omz:module:tmux' auto-start 'yes'

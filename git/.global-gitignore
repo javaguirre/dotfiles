@@ -3,3 +3,4 @@
 *.so
 *.sw[op]
 *.pyc
+.venv/

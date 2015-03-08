@@ -2,3 +2,8 @@
 *.pyc
 .cask/
 auto-save-list/
+
+# Emacs
+ac-comphist.dat
+projectile-bookmarks.eld
+tramp

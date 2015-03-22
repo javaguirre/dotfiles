@@ -165,15 +165,18 @@ bindsym Mod4+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    # i3bar_command /home/user/bin/i3bar
-    status_command i3status --config ~/.i3status.conf
-    position top
+    # i3bar_command /usr/bin/i3bar
+    # status_command i3status --config ~/.i3status.conf
 
-    # mode hide
-    # hidden_state hide
-    # modifier Mod4
-    tray_output none
+    status_command py3status -n 20
+    # status_command python /usr/lib/python3.4/site-packages/powerline/bindings/i3/powerline-i3.py
+
     font pango:Envy Code R 10
+    mode hide
+    hidden_state hide
+    modifier Mod4
+    position top
+    tray_output none
 
     colors {
         background #000000
@@ -205,8 +208,8 @@ client.urgent           #2f343a #900000 #ffffff #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +10% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -10% #decrease sound volume
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls

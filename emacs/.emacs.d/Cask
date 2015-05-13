@@ -31,6 +31,8 @@
 (depends-on "package-build")
 (depends-on "pallet")
 (depends-on "php-mode")
+(depends-on "vala-mode")
+(depends-on "js2-mode")
 (depends-on "phpunit")
 (depends-on "pkg-info")
 (depends-on "popup")

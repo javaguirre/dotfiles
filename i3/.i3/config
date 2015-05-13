@@ -168,10 +168,10 @@ bar {
     # i3bar_command /usr/bin/i3bar
     # status_command i3status --config ~/.i3status.conf
 
-    status_command py3status -n 20
+    status_command py3status -n 2
     # status_command python /usr/lib/python3.4/site-packages/powerline/bindings/i3/powerline-i3.py
 
-    font pango:Envy Code R 10
+    font pango:Terminus 10
     mode hide
     hidden_state hide
     modifier Mod4

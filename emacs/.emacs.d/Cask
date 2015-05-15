@@ -51,6 +51,7 @@
 (depends-on "smart-mode-line")
 (depends-on "ujelly-theme")
 (depends-on "undo-tree")
+(depends-on "tramp")
 (depends-on "web-mode")
 (depends-on "yasnippet")
 (depends-on "yaml-mode")

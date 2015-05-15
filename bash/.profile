@@ -31,7 +31,7 @@ export GOPATH=$HOME/code/go
 export GOROOT=/usr/lib/go
 export PYTHONSTARTUP=$HOME/.pythonrc
 export RBENV="$HOME/.rbenv/bin"
-export CASKPATH="/home/javaguirre/.cask/bin"
+export CASKPATH="$HOME/.cask/bin"
 export PATH=$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$GOROOT/bin":"$COFFEEPATH":"$NODE_MODULES":"$GOPATH/bin:$CASKPATH"
 export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
 

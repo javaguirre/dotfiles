@@ -32,11 +32,5 @@ export GOROOT=/usr/lib/go
 export PYTHONSTARTUP=$HOME/.pythonrc
 export RBENV="$HOME/.rbenv/bin"
 export CASKPATH="$HOME/.cask/bin"
-export PATH=$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$GOROOT/bin":"$COFFEEPATH":"$NODE_MODULES":"$GOPATH/bin:$CASKPATH"
+export PATH=$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$GOROOT/bin":"$COFFEEPATH":"$NODE_MODULES":"$GOPATH/bin:$CASKPATH":"$ANDROID_SDK/platform-tools"
 export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
-
-# virtualenv
-# source /usr/bin/virtualenvwrapper.sh
-# export WORKON_HOME="$HOME/.virtualenvs"
-# export PIP_VIRTUALENV_BASE=$WORKON_HOME
-# export PIP_RESPECT_VIRTUALENV=true

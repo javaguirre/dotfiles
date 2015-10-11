@@ -1,19 +1,17 @@
 # Path to your oh-my-fish.
 set fish_path $HOME/.oh-my-fish
 
+. $fish_path/oh-my-fish.fish
+
 # Theme
 # set fish_theme bobthefish
-set fish_theme clearance
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
-# Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
-# Example format: set fish_plugins autojump bundler
-set fish_plugins git autojump archlinux extract tmux vi-mode
+Theme 'clearance'
+Plugin 'extract'
+Plugin 'tmux'
+Plugin 'vi-mode'
 
 # Path to your custom folder (default path is $FISH/custom)
 #set fish_custom $HOME/dotfiles/oh-my-fish
 alias emacs  "emacs -nw"
+alias e  "emacs -nw"
 alias shutit "shutdown -h now"
-
-# Load oh-my-fish configuration.
-. $fish_path/oh-my-fish.fish

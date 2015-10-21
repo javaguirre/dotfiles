@@ -14,3 +14,4 @@ xset s off
 setxkbmap en_US -option ctrl:nocaps &amp;
 pulseaudio --start
 emacs -nw --daemon
+spideroak &amp;

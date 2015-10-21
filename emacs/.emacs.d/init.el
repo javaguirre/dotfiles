@@ -8,6 +8,12 @@
 ;;  TRAMP
 (setq tramp-default-method "sshx")
 
+;; Smart mode
+(require 'smart-mode-line)
+(setq sml/theme 'automatic)
+(sml/setup)
+;; (sml/apply-theme 'dark)
+
 ;; backup files
 (setq make-backup-files nil)
 
@@ -15,9 +21,6 @@
 
 ;; Indent - Rainbow delimiters
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-;; (require 'indent-guide)
-;; (indent-guide-global-mode)
-;; (setq indent-guide-delay 0.)
 
 ;; Helm
 (helm-mode 1)
@@ -76,8 +79,7 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
-(load-theme 'ample t)
-(load-theme 'ample-light t)
+(load-theme 'ample-flat t)
 (global-linum-mode 1) (ido-mode 1)
 
 (setq-default indent-tabs-mode nil)
@@ -136,17 +138,3 @@
 (setq web-mode-markup-indent-offset 4)
 (setq web-mode-css-indent-offset 4)
 (setq web-mode-code-indent-offset 4)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("764e3a6472a3a4821d929cdbd786e759fab6ef6c2081884fca45f1e1e3077d1d" "8d6fb24169d94df45422617a1dfabf15ca42a97d594d28b3584dc6db711e0e0b" "895c6c225c84cc7a2485072a10ff251e24ba71fd5662f8f0fed2a2e4a56349ef" "1da471d12ceb1f6f06dc4666a3b6f063890927446535bebe75e8a3273e153414" "30e60749e77fc58bea4ace21feecb59d6a1f921845cd0fdd89f5c28de5e9574e" "520a785e4d67c323ac3dd26971a22bb4ec1b045543371b156ff3a577b2f844c3" "3ba8ee2890f53672f5b8baba841f79dcf983f2ae1537cd4209e5f0f6ea014941" "e6d5726c8db524411c35237d321b3d39555e5768fa02097c72806a297ef567ab" "08efabe5a8f3827508634a3ceed33fa06b9daeef9c70a24218b70494acdf7855" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "0f6e58d1814b4138c5a88241f96547d35883cbb3df6cf9ec8ef44856ece04c13" "9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

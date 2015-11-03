@@ -17,7 +17,6 @@
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "flymake")
-(depends-on "git-commit-mode")
 (depends-on "git-gutter")
 (depends-on "go-mode")
 (depends-on "dockerfile-mode")

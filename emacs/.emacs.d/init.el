@@ -9,6 +9,7 @@
 (setq tramp-default-method "sshx")
 
 ;; Smart mode
+(setq sml/no-confirm-load-theme t)
 (require 'smart-mode-line)
 (setq sml/theme 'automatic)
 (sml/setup)
@@ -79,6 +80,8 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
+(load-theme 'ample t)
+(load-theme 'ample-light t)
 (load-theme 'ample-flat t)
 (global-linum-mode 1) (ido-mode 1)
 

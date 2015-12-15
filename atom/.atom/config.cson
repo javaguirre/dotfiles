@@ -12,13 +12,15 @@
     ]
     disabledPackages: [
       "metrics"
+      "go-plus"
+      "language-swift"
     ]
   editor:
     invisibles: {}
-    fontSize: 13
     showIndentGuide: true
     fontFamily: "Envy Code R"
     tabLength: 4
+    fontSize: 13
   "vim-mode": {}
   "terminal-plus":
     core: {}
@@ -28,81 +30,71 @@
       autoClose: true
     ansiColors:
       normal:
-        black:
-          red: 40
-          green: 42
-          blue: 46
-          alpha: 1
         blue:
-          red: 95
-          green: 129
-          blue: 157
+          red: 88
+          green: 157
+          blue: 246
           alpha: 1
         cyan:
-          red: 94
-          green: 141
-          blue: 135
+          red: 31
+          green: 158
+          blue: 231
           alpha: 1
         green:
-          red: 140
-          green: 148
-          blue: 64
+          red: 33
+          green: 176
+          blue: 137
           alpha: 1
         magenta:
-          red: 133
-          green: 103
-          blue: 143
+          red: 148
+          green: 77
+          blue: 149
           alpha: 1
         red:
-          red: 165
-          green: 66
-          blue: 66
+          red: 249
+          green: 85
+          blue: 95
           alpha: 1
         white:
-          red: 150
-          green: 152
-          blue: 150
+          red: 187
+          green: 187
+          blue: 187
           alpha: 1
         yellow:
-          red: 222
-          green: 147
-          blue: 95
+          red: 254
+          green: 240
+          blue: 42
           alpha: 1
       zBright:
         brightBlack:
-          red: 55
-          green: 59
-          blue: 65
+          red: 85
+          green: 85
+          blue: 85
           alpha: 1
         brightBlue:
-          red: 129
-          green: 162
-          blue: 190
+          red: 88
+          green: 157
+          blue: 246
           alpha: 1
         brightCyan:
-          red: 138
-          green: 190
-          blue: 183
+          red: 57
+          green: 121
+          blue: 188
           alpha: 1
         brightGreen:
-          red: 181
-          green: 189
-          blue: 104
+          red: 53
+          green: 187
+          blue: 154
           alpha: 1
         brightMagenta:
-          red: 178
-          green: 148
-          blue: 187
+          red: 231
+          green: 86
+          blue: 153
           alpha: 1
         brightRed:
-          red: 204
-          green: 102
-          blue: 102
-          alpha: 1
-        brightWhite:
-          red: 197
-          green: 200
-          blue: 198
+          red: 250
+          green: 140
+          blue: 143
           alpha: 1
         brightYellow:
           red: 255
@@ -126,6 +118,10 @@
   "go-plus":
     goPath: "/Users/javaguirre/code/go"
     goInstallation: "/usr/local/opt/go/libexec"
+  "exception-reporting":
+    userId: "92909795-0858-cf84-4503-b2613eaa9a1f"
+  drupal:
+    fileTypesPhp: "module,install,inc,test"
 ".ini.source":
   editor:
     tabLength: 4

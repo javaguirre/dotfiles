@@ -43,7 +43,6 @@
 (depends-on "pylint")
 (depends-on "python-django")
 (depends-on "python-environment")
-(depends-on "python-info")
 (depends-on "rainbow-delimiters")
 (depends-on "rainbow-mode")
 (depends-on "s")

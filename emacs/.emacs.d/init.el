@@ -83,6 +83,7 @@
 (load-theme 'ample t)
 (load-theme 'ample-light t)
 (load-theme 'ample-flat t)
+(enable-theme 'ample-flat t)
 (global-linum-mode 1) (ido-mode 1)
 
 (setq-default indent-tabs-mode nil)

@@ -8,3 +8,11 @@ ac-comphist.dat
 projectile-bookmarks.eld
 tramp
 tmux/.tmux/
+
+# Atom
+atom/.atom/.apm/
+atom/.atom/.node-gyp/
+atom/.atom/blob-store/
+atom/.atom/compile-cache/
+atom/.atom/packages/
+atom/.atom/storage/

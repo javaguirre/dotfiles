@@ -1,6 +1,6 @@
 ansible
 cask
-composer
+homebrew/php/composer
 ctags
 emacs
 freetype

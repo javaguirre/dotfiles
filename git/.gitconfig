@@ -2,7 +2,7 @@
 	name = Javier Aguirre
 	email = contacto@javaguirre.net
 [core]
-	excludesfile = ~/.global-gitignore
+	excludesfile = /Users/javaguirre/.global-gitignore
 	editor = vim
 [alias]
 	compact = "!sh -c \"echo \\\"Before: `du -sh .git`\\\"; git count-objects; git gc --aggressive --prune; echo \\\"After: `du -sh .git`\\\"; git count-objects\""
@@ -15,3 +15,13 @@
 	ui = auto
 [push]
 	default = matching
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

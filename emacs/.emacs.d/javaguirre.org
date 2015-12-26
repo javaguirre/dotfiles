@@ -1,0 +1,439 @@
+#+TITLE: Javier Aguirre's Emacs 24 Configuration
+#+AUTHOR: Javier Aguirre
+#+EMAIL: hello@javaguirre.net
+#+OPTIONS: toc:3 num:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://thomasf.github.io/solarized-css/solarized-light.min.css" />
+
+* Configuration
+  Configuration based on Aaron Bedra's https://github.com/abedra/emacs.d
+** User details
+   :PROPERTIES:
+   :CUSTOM_ID: user-info
+   :END:
+
+   Emacs will normally pick this up automatically, but this way I can
+   be sure the right information is always present.
+   #+begin_src emacs-lisp
+     (setq user-full-name "Javier Aguirre")
+     (setq user-mail-address "hello@javaguirre.net")
+   #+end_src
+** Environment
+   :PROPERTIES:
+   :CUSTOM_ID: environment
+   :END:
+
+   Emacs lisp is really only a subset of common lisp, and I need to
+   have some of the additional functionality to make the configuration
+   and its dependencies work properly, which we get by requiring
+   [[http://www.emacswiki.org/emacs/CommonLispForEmacs][Common Lisp for Emacs]].
+   #+begin_src emacs-lisp
+     (require 'cl)
+   #+end_src
+** Package Management
+   :PROPERTIES:
+   :CUSTOM_ID: package-management
+   :END:
+
+   Since Emacs 24, Emacs includes the Emacs Lisp Package Archive
+   ([[http://www.emacswiki.org/emacs/ELPA][ELPA]]) by default. This provides a nice way to install additional
+   packages. Since the default package archive doesn't include
+   everything necessary, the [[http://marmalade-repo.org/][marmalade]], and [[http://melpa.milkbox.net/#][melpa]] repositories are also
+   added.
+   #+begin_src emacs-lisp
+     (load "package")
+     (package-initialize)
+     (add-to-list 'package-archives
+                  '("marmalade" . "http://marmalade-repo.org/packages/"))
+     (add-to-list 'package-archives
+                  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+     (setq package-archive-enable-alist '(("melpa" deft magit)))
+   #+end_src
+*** Define default packages
+    :PROPERTIES:
+    :CUSTOM_ID: default-packages
+    :END:
+
+    This is the list of packages used in this configuration.
+    #+begin_src emacs-lisp
+      (defvar javaguirre/packages '(ample-theme
+                                    auto-complete
+                                    restclient
+                                    dash
+                                    deferred
+                                    direx
+                                    epl
+                                    evil
+                                    evil-leader
+                                    evil-surround
+                                    flycheck
+                                    git-gutter
+                                    goto-chg
+                                    helm
+                                    helm-projectile
+                                    key-chord
+                                    markdown-mode
+                                    coffee-mode
+                                    nginx-mode
+                                    org
+                                    package-build
+                                    php-mode
+                                    web-mode
+                                    projectile
+                                    rainbow-delimiters
+                                    rainbow-mode
+                                    solarized-theme
+                                    yasnippet
+                                    yaml-mode)
+        "Default packages")
+    #+end_src
+*** Install default packages
+    :PROPERTIES:
+    :CUSTOM_ID: package-install
+    :END:
+
+    When Emacs boots, check to make sure all of the packages defined
+    in =javaguirre/packages= are installed. If not, have ELPA take care of
+    it.
+    #+begin_src emacs-lisp
+      (defun javaguirre/packages-installed-p ()
+        (loop for pkg in javaguirre/packages
+              when (not (package-installed-p pkg)) do (return nil)
+              finally (return t)))
+
+      (unless (javaguirre/packages-installed-p)
+        (message "%s" "Refreshing package database...")
+        (package-refresh-contents)
+        (dolist (pkg javaguirre/packages)
+          (when (not (package-installed-p pkg))
+            (package-install pkg))))
+    #+end_src
+** Start-up options
+   :PROPERTIES:
+   :CUSTOM_ID: start-up-options
+   :END:
+
+*** Splash Screen
+    :PROPERTIES:
+    :CUSTOM_ID: splash-screen
+    :END:
+
+    I want to skip straight to the scratch buffer. This turns off the
+    splash screen and puts me straight into the scratch buffer. I
+    don't really care to have anything in there either, so turn off
+    the message while we're at it. Since I end up using =org-mode=
+    most of the time, set the default mode accordingly.
+    #+begin_src emacs-lisp
+      (setq inhibit-splash-screen t
+            initial-scratch-message nil
+            initial-major-mode 'org-mode)
+    #+end_src
+*** Scroll bar, Tool bar, Menu bar
+    :PROPERTIES:
+    :CUSTOM_ID: menu-bars
+    :END:
+
+    Emacs starts up with way too much enabled. Turn off the scroll bar,
+    menu bar, and tool bar. There isn't really a reason to have them
+    on.
+    #+begin_src emacs-lisp
+      (scroll-bar-mode -1)
+      (tool-bar-mode -1)
+      (menu-bar-mode -1)
+    #+end_src
+*** Marking text
+    :PROPERTIES:
+    :CUSTOM_ID: regions
+    :END:
+
+    There are some behaviors in Emacs that aren't intuitive. Since I
+    pair with others that don't know how Emacs handles highlighting,
+    treat regions like other text editors. This means typing when the
+    mark is active will write over the marked region. Also, make the
+    common highlighting keystrokes work the way most people expect
+    them to. This saves a lot of time explaining how to highlight
+    areas of text. Emacs also has it's own clipboard and doesn't
+    respond to the system clipboard by default, so tell Emacs that
+    we're all friends and can get along.
+    #+begin_src emacs-lisp
+      (delete-selection-mode t)
+      (transient-mark-mode t)
+      (setq x-select-enable-clipboard t)
+    #+end_src
+*** Display Settings
+    :PROPERTIES:
+    :CUSTOM_ID: buffers
+    :END:
+
+    I have some modifications to the default display. First, a
+    minor tweak to the frame title. It's also nice to be able to see
+    when a file actually ends. This will put empty line markers into
+    the left hand side.
+    #+begin_src emacs-lisp
+
+
+      (setq-default indicate-empty-lines t)
+      (when (not indicate-empty-lines)
+        (toggle-indicate-empty-lines))
+    #+end_src
+*** Indentation
+    :PROPERTIES:
+    :CUSTOM_ID: indentation
+    :END:
+
+    There's nothing I dislike more than tabs in my files. Make sure I
+    don't share that discomfort with others.
+    #+begin_src emacs-lisp
+      (setq tab-width 4
+            indent-tabs-mode nil)
+    #+end_src
+*** Backup files
+    :PROPERTIES:
+    :CUSTOM_ID: backup-files
+    :END:
+
+    Some people like to have them. I don't. Rather than pushing them
+    to a folder, never to be used, just turn the whole thing off.
+    #+begin_src emacs-lisp
+      (setq make-backup-files nil)
+    #+end_src
+*** Yes and No
+    :PROPERTIES:
+    :CUSTOM_ID: yes-and-no
+    :END:
+
+    Nobody likes to have to type out the full yes or no when Emacs
+    asks. Which it does often. Make it one character.
+    #+begin_src emacs-lisp
+      (defalias 'yes-or-no-p 'y-or-n-p)
+    #+end_src
+*** Misc
+    :PROPERTIES:
+    :CUSTOM_ID: misc
+    :END:
+
+    Turn down the time to echo keystrokes so I don't have to wait
+    around for things to happen. Dialog boxes are also a bit annoying,
+    so just have Emacs use the echo area for everything. Beeping is
+    for robots, and I am not a robot. Use a visual indicator instead
+    of making horrible noises. Oh, and always highlight parentheses. A
+    person could go insane without that.
+    #+begin_src emacs-lisp
+      (setq echo-keystrokes 0.1
+            use-dialog-box nil
+            visible-bell t)
+      (show-paren-mode t)
+    #+end_src
+** Utilities
+*** Ido
+    =Ido= mode provides a nice way to navigate the filesystem. This is
+    mostly just turning it on.
+    #+begin_src emacs-lisp
+      (ido-mode t)
+      (setq ido-enable-flex-matching t
+            ido-use-virtual-buffers t
+            ido-everywhere t)
+    #+end_src
+*** Linum
+    #+begin_src emacs-lisp
+      (global-linum-mode 1)
+      (setq linum-format "%3d ")
+      (global-hl-line-mode 1)
+    #+end_src
+*** Column number mode
+    Turn on column numbers.
+    #+begin_src emacs-lisp
+      (setq column-number-mode t)
+    #+end_src
+*** Temporary file management
+    Deal with temporary files. I don't care about them and this makes
+    them go away.
+    #+begin_src emacs-lisp
+      (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+      (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+    #+end_src
+*** auto-complete
+    Turn on auto complete.
+    #+begin_src emacs-lisp
+      (require 'auto-complete-config)
+      (ac-config-default)
+    #+end_src
+*** Indentation and buffer cleanup
+    This re-indents, untabifies, and cleans up whitespace. It is stolen
+    directly from the emacs-starter-kit.
+    #+begin_src emacs-lisp
+      (defun untabify-buffer ()
+        (interactive)
+        (untabify (point-min) (point-max)))
+
+      (defun indent-buffer ()
+        (interactive)
+        (indent-region (point-min) (point-max)))
+
+      (defun cleanup-buffer ()
+        "Perform a bunch of operations on the whitespace content of a buffer."
+        (interactive)
+        (indent-buffer)
+        (untabify-buffer)
+        (delete-trailing-whitespace))
+
+      (defun cleanup-region (beg end)
+        "Remove tmux artifacts from region."
+        (interactive "r")
+        (dolist (re '("\\\\│\·*\n" "\W*│\·*"))
+          (replace-regexp re "" nil beg end)))
+
+      (global-set-key (kbd "C-x M-t") 'cleanup-region)
+      (global-set-key (kbd "C-c n") 'cleanup-buffer)
+
+      (setq-default show-trailing-whitespace t)
+    #+end_src
+*** flyspell
+    The built-in Emacs spell checker. Turn off the welcome flag because
+    it is annoying and breaks on quite a few systems. Specify the
+    location of the spell check program so it loads properly.
+    #+begin_src emacs-lisp
+      (setq flyspell-issue-welcome-flag nil)
+      (if (eq system-type 'darwin)
+          (setq-default ispell-program-name "/usr/local/bin/aspell")
+        (setq-default ispell-program-name "/usr/bin/aspell"))
+      (setq-default ispell-list-command "list")
+    #+end_src
+** Language Hooks
+   :PROPERTIES:
+   :CUSTOM_ID: languages
+   :END:
+*** shell-script-mode
+    :PROPERTIES:
+    :CUSTOM_ID: shell-script-mode
+    :END:
+    Use =shell-script-mode= for =.zsh= files.
+    #+begin_src emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
+    #+end_src
+*** conf-mode
+    :PROPERTIES:
+    :CUSTOM_ID: conf-mode
+    :END:
+    #+begin_src emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.gitconfig$" . conf-mode))
+    #+end_src
+*** Web Mode
+    :PROPERTIES:
+    :CUSTOM_ID: web-mode
+    :END:
+
+    #+begin_src emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.html\\.twig?\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js-mode))
+    #+end_src
+*** YAML
+    Add additional file extensions that trigger =yaml-mode=.
+    #+begin_src emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+      (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+    #+end_src
+*** CoffeeScript Mode
+    The default CoffeeScript mode makes terrible choices. This turns
+    everything into 2 space indentations and makes it so the mode
+    functions rather than causing you indentation errors every time you
+    modify a file.
+    #+begin_src emacs-lisp
+      (defun coffee-custom ()
+        "coffee-mode-hook"
+        (make-local-variable 'tab-width)
+        (set 'tab-width 2))
+
+      (add-hook 'coffee-mode-hook 'coffee-custom)
+    #+end_src
+*** JavaScript Mode
+    =js-mode= defaults to using 4 spaces for indentation. Change it to 2
+    #+begin_src emacs-lisp
+      (defun js-custom ()
+        "js-mode-hook"
+        (setq js-indent-level 2))
+
+      (add-hook 'js-mode-hook 'js-custom)
+    #+end_src
+*** Markdown Mode
+    Enable Markdown mode and setup additional file extensions. Use
+    pandoc to generate HTML previews from within the mode, and use a
+    custom css file to make it a little prettier.
+    #+begin_src emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+      (add-to-list 'auto-mode-alist '("\\.mdown$" . markdown-mode))
+      (add-hook 'markdown-mode-hook
+                (lambda ()
+                  (visual-line-mode t)
+                  (writegood-mode t)
+                  (flyspell-mode t)))
+      (setq markdown-command "pandoc --smart -f markdown -t html")
+    #+end_src
+*** Themes
+    Load solarized-light if in a graphical environment. Load the
+    wombat theme if in a terminal.
+    #+begin_src emacs-lisp
+    (load-theme 'ample-flat t)
+    #+end_src
+*** Projectile
+    #+begin_src emacs-lisp
+      (projectile-global-mode)
+    #+end_src
+*** Indent - Rainbow delimiters
+    #+begin_src emacs-lisp
+      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+    #+end_src
+*** Helm
+    #+begin_src emacs-lisp
+      (helm-mode 1)
+      (global-set-key (kbd "M-x") 'helm-M-x)
+      (global-set-key (kbd "C-x C-f") 'helm-find-files)
+      (global-set-key (kbd "C-x b") 'helm-buffers-list)
+    #+end_src
+*** Org mode
+    #+begin_src emacs-lisp
+      (setq org-time-clocksum-format (quote (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+      (setq org-pretty-entities t)
+    #+end_src
+*** Evil
+    Evil mode
+    #+begin_src emacs-lisp
+      (require 'evil)
+      (global-evil-leader-mode)
+      (evil-leader/set-key
+	   "c" 'delete-trailing-whitespace)
+      (evil-leader/set-key
+	   "b" 'helm-buffers-list)
+
+      (evil-leader/set-key
+	   "d" 'org-time-stamp)
+      (evil-leader/set-key
+	   "t" 'org-time-stamp)
+      (evil-leader/set-key
+	   "i" 'org-clock-in)
+      (evil-leader/set-key
+	   "o" 'org-clock-out)
+      (evil-leader/set-key
+	   "r" 'org-ctrl-c-ctrl-c)
+      (evil-leader/set-key
+	   "a" 'org-table-align)
+      (evil-mode 1)
+
+      (require 'evil-surround)
+      (global-evil-surround-mode 1)
+      (setq key-chord-two-keys-delay 0.5)
+      (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+      (key-chord-mode 1)
+    #+end_src
+*** Trailing whitespaces
+    #+begin_src emacs-lisp
+      (setq-default show-trailing-whitespace t)
+    #+end_src
+*** Git Gutter
+    #+begin_src emacs-lisp
+      (global-git-gutter-mode +1)
+      (setq git-gutter:modified-sign "~")
+      (set-face-foreground 'git-gutter:modified "orange")
+    #+end_src
+#+end_src

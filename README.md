@@ -13,6 +13,11 @@ or all of them using
 
 My change was inspired by this [stow article][stow_article]
 
+Emacs
+-----
+
+You can check [emacs configuration page][emacs].
+
 Using vundle
 ------------
 
@@ -27,3 +32,4 @@ Using oh-my-zsh
 
 [stow]: http://www.gnu.org/software/stow/
 [stow_article]: http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
+[emacs]: https://github.com/javaguirre/dotfiles/blob/master/emacs/.emacs.d/javaguirre.org

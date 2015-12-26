@@ -371,10 +371,15 @@
       (setq markdown-command "pandoc --smart -f markdown -t html")
     #+end_src
 *** Themes
-    Load solarized-light if in a graphical environment. Load the
-    wombat theme if in a terminal.
+    Load the Ample theme
     #+begin_src emacs-lisp
     (load-theme 'ample-flat t)
+    #+end_src
+*** Font
+    Font selection
+    #+begin_src emacs-lisp
+      (add-to-list 'default-frame-alist '(font . "Fira Mono for Powerline-12"))
+      (set-face-attribute 'default t :font "Fira Mono for Powerline-12")
     #+end_src
 *** Projectile
     #+begin_src emacs-lisp

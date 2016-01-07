@@ -62,10 +62,16 @@
                                     dash
                                     deferred
                                     direx
+                                    highlight
                                     epl
                                     evil
                                     evil-leader
+                                    evil-quickscope
                                     evil-surround
+                                    evil-nerd-commenter
+                                    evil-smartparens
+                                    evil-search-highlight-persist
+                                    evil-visual-mark-mode
                                     flycheck
                                     git-gutter
                                     goto-chg
@@ -84,6 +90,7 @@
                                     rainbow-delimiters
                                     rainbow-mode
                                     solarized-theme
+                                    smartparens
                                     yasnippet
                                     yaml-mode)
         "Default packages")

@@ -231,6 +231,99 @@
             visible-bell t)
       (show-paren-mode t)
     #+end_src
+
+** Evil
+    Evil mode
+    #+begin_src emacs-lisp
+      (require 'evil)
+    #+end_src
+
+*** Keys
+
+    General keys
+
+    I am using jk to move back to normal mode
+
+    #+begin_src emacs-lisp
+      (global-evil-leader-mode)
+      (evil-leader/set-key
+	   "c" 'delete-trailing-whitespace)
+      (evil-leader/set-key
+	   "b" 'helm-buffers-list)
+
+      (setq key-chord-two-keys-delay 0.5)
+      (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+      (key-chord-mode 1)
+    #+end_src
+
+    Org keys
+
+    #+begin_src emacs-lisp
+      (evil-leader/set-key
+	   "d" 'org-time-stamp)
+      (evil-leader/set-key
+	   "t" 'org-time-stamp)
+      (evil-leader/set-key
+	   "i" 'org-clock-in)
+      (evil-leader/set-key
+	   "o" 'org-clock-out)
+      (evil-leader/set-key
+	   "r" 'org-ctrl-c-ctrl-c)
+      (evil-leader/set-key
+	   "a" 'org-table-align)
+      (evil-mode 1)
+    #+end_src
+
+*** Surround
+    #+begin_src emacs-lisp
+      (require 'evil-surround)
+      (global-evil-surround-mode 1)
+    #+end_src
+
+*** Mark
+
+    Show vim/evil marks visually
+
+    #+begin_src emacs-lisp
+      (require 'evil-visual-mark-mode)
+      (evil-visual-mark-mode 1)
+    #+end_src
+
+*** Highlight
+
+    Better highlight when searching, like hlsearch in vim
+
+    #+begin_src emacs-lisp
+      (require 'highlight)
+      (require 'evil-search-highlight-persist)
+      (global-evil-search-highlight-persist t)
+      (setq evil-search-highlight-string-min-len 3)
+    #+end_src
+
+    Highlights characters to be used with f,F,t,T
+
+    #+begin_src emacs-lisp
+      (require 'evil-quickscope)
+      (global-evil-quickscope-always-mode 1)
+    #+end_src
+
+*** Smart parentheses
+
+    #+begin_src emacs-lisp
+      (require 'smartparens-config)
+      (smartparens-global-mode t)
+      (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+    #+end_src
+
+*** Commenter
+
+    #+begin_src emacs-lisp
+      (evilnc-default-hotkeys)
+      (evil-leader/set-key
+        "\\" 'evilnc-comment-operator
+      )
+    #+end_src
+
 ** Utilities
 *** Ido
     =Ido= mode provides a nice way to navigate the filesystem. This is
@@ -408,36 +501,6 @@
     #+begin_src emacs-lisp
       (setq org-time-clocksum-format (quote (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
       (setq org-pretty-entities t)
-    #+end_src
-*** Evil
-    Evil mode
-    #+begin_src emacs-lisp
-      (require 'evil)
-      (global-evil-leader-mode)
-      (evil-leader/set-key
-	   "c" 'delete-trailing-whitespace)
-      (evil-leader/set-key
-	   "b" 'helm-buffers-list)
-
-      (evil-leader/set-key
-	   "d" 'org-time-stamp)
-      (evil-leader/set-key
-	   "t" 'org-time-stamp)
-      (evil-leader/set-key
-	   "i" 'org-clock-in)
-      (evil-leader/set-key
-	   "o" 'org-clock-out)
-      (evil-leader/set-key
-	   "r" 'org-ctrl-c-ctrl-c)
-      (evil-leader/set-key
-	   "a" 'org-table-align)
-      (evil-mode 1)
-
-      (require 'evil-surround)
-      (global-evil-surround-mode 1)
-      (setq key-chord-two-keys-delay 0.5)
-      (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
-      (key-chord-mode 1)
     #+end_src
 *** Trailing whitespaces
     #+begin_src emacs-lisp

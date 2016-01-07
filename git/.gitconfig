@@ -1,8 +1,8 @@
 [user]
 	name = Javier Aguirre
-	email = contacto@javaguirre.net
+	email = javier.aguirre@surfsara.nl
 [core]
-	excludesfile = /Users/javaguirre/.global-gitignore
+	excludesfile = /Users/javiera/.global-gitignore
 	editor = vim
 [alias]
 	compact = "!sh -c \"echo \\\"Before: `du -sh .git`\\\"; git count-objects; git gc --aggressive --prune; echo \\\"After: `du -sh .git`\\\"; git count-objects\""

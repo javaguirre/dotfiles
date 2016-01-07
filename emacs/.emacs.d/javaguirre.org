@@ -78,6 +78,7 @@
                                     org
                                     package-build
                                     php-mode
+                                    drupal-mode
                                     web-mode
                                     projectile
                                     rainbow-delimiters

@@ -8,6 +8,8 @@ emacs/.emacs.d/projectile-bookmarks.eld
 emacs/.emacs.d/tramp
 emacs/.emacs.d/elpa/
 emacs/.emacs.d/javaguirre.el
+emacs/.emacs.d/.cask
+emacs/.emacs.d/recentf
 
 # TMUX
 tmux/.tmux/

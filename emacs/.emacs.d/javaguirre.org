@@ -334,6 +334,7 @@
     #+begin_src emacs-lisp
       (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
       (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+      (setq yaml-indent-offset 2)
     #+end_src
 *** CoffeeScript Mode
     The default CoffeeScript mode makes terrible choices. This turns
@@ -374,7 +375,7 @@
 *** Themes
     Load the Ample theme
     #+begin_src emacs-lisp
-    (load-theme 'ample-flat t)
+      (load-theme 'ample-flat t)
     #+end_src
 *** Font
     Font selection

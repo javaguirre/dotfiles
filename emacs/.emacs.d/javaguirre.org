@@ -84,7 +84,6 @@
                                     org
                                     package-build
                                     php-mode
-                                    drupal-mode
                                     web-mode
                                     projectile
                                     rainbow-delimiters
@@ -444,6 +443,11 @@
       (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
       (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
       (setq yaml-indent-offset 2)
+    #+end_src
+*** PHP
+    #+begin_src emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.inc" . php-mode))
+      (add-to-list 'auto-mode-alist '("\\.module" . php-mode))
     #+end_src
 *** CoffeeScript Mode
     The default CoffeeScript mode makes terrible choices. This turns

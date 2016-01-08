@@ -393,13 +393,10 @@
       (add-hook 'prog-mode-hook 'fci-mode)
     #+end_src
 *** Indent guide
-    The last line is a workaround to fix
-    an issue with fill-column-indicator
     #+begin_src emacs-lisp
       (require 'indent-guide)
       (indent-guide-global-mode)
       (setq indent-guide-delay 0.5)
-      (setq indent-guide-threshold 0)
     #+end_src
 *** Indentation and buffer cleanup
     This re-indents, untabifies, and cleans up whitespace. It is stolen

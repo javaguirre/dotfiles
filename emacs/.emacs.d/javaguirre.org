@@ -72,12 +72,14 @@
                                     evil-smartparens
                                     evil-search-highlight-persist
                                     evil-visual-mark-mode
+                                    fill-column-indicator
                                     flycheck
                                     git-gutter
                                     goto-chg
                                     helm
                                     helm-projectile
                                     key-chord
+                                    indent-guide
                                     markdown-mode
                                     coffee-mode
                                     nginx-mode
@@ -268,8 +270,8 @@
 	   "i" 'org-clock-in)
       (evil-leader/set-key
 	   "o" 'org-clock-out)
-      (evil-leader/set-key
-	   "r" 'org-ctrl-c-ctrl-c)
+      ;; (evil-leader/set-key
+      ;;      "r" 'org-ctrl-c-ctrl-c)
       (evil-leader/set-key
 	   "a" 'org-table-align)
       (evil-mode 1)
@@ -326,6 +328,17 @@
     #+end_src
 
 ** Utilities
+*** Recent files
+    #+begin_src emacs-lisp
+      (require 'recentf)
+      (recentf-mode 1)
+      (setq recentf-max-menu-items 50)
+
+      (evil-leader/set-key
+        "r" 'recentf-open-files
+      )
+    #+end_src
+
 *** Flycheck
     Flycheck
     #+begin_src emacs-lisp
@@ -368,6 +381,25 @@
     #+begin_src emacs-lisp
       (require 'auto-complete-config)
       (ac-config-default)
+    #+end_src
+*** Fill column indicator
+    Adds a vertical line to control line width
+    #+begin_src emacs-lisp
+      (require 'fill-column-indicator)
+      (setq fci-rule-column 80)
+      (setq fci-rule-character-color "dimgray")
+      (setq fci-rule-color "dimgray")
+      (setq fci-rule-use-dashes t)
+      (add-hook 'prog-mode-hook 'fci-mode)
+    #+end_src
+*** Indent guide
+    The last line is a workaround to fix
+    an issue with fill-column-indicator
+    #+begin_src emacs-lisp
+      (require 'indent-guide)
+      (indent-guide-global-mode)
+      (setq indent-guide-delay 0.5)
+      (setq indent-guide-threshold 0)
     #+end_src
 *** Indentation and buffer cleanup
     This re-indents, untabifies, and cleans up whitespace. It is stolen

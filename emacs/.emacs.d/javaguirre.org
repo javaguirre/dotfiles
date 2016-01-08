@@ -325,6 +325,16 @@
     #+end_src
 
 ** Utilities
+*** Flycheck
+    Flycheck
+    #+begin_src emacs-lisp
+      (add-hook 'after-init-hook #'global-flycheck-mode)
+      '(flycheck-display-errors-delay 0.5)
+    #+end_src
+*** Rainbow delimiters
+    #+begin_src emacs-lisp
+      (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+    #+end_src
 *** Ido
     =Ido= mode provides a nice way to navigate the filesystem. This is
     mostly just turning it on.

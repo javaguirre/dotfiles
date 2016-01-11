@@ -66,7 +66,6 @@
                                     epl
                                     evil
                                     evil-leader
-                                    evil-quickscope
                                     evil-surround
                                     evil-nerd-commenter
                                     evil-smartparens
@@ -303,13 +302,6 @@
       (setq evil-search-highlight-string-min-len 3)
     #+end_src
 
-    Highlights characters to be used with f,F,t,T
-
-    #+begin_src emacs-lisp
-      (require 'evil-quickscope)
-      (global-evil-quickscope-always-mode 1)
-    #+end_src
-
 *** Smart parentheses
 
     #+begin_src emacs-lisp
@@ -467,6 +459,8 @@
       (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
       (add-to-list 'auto-mode-alist '("\\.html\\.twig?\\'" . web-mode))
       (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js-mode))
+      (setq web-mode-css-indent-offset 4)
+      (setq web-mode-code-indent-offset 4)
     #+end_src
 *** YAML
     Add additional file extensions that trigger =yaml-mode=.
@@ -492,15 +486,6 @@
         (set 'tab-width 2))
 
       (add-hook 'coffee-mode-hook 'coffee-custom)
-    #+end_src
-*** JavaScript Mode
-    =js-mode= defaults to using 4 spaces for indentation. Change it to 2
-    #+begin_src emacs-lisp
-      (defun js-custom ()
-        "js-mode-hook"
-        (setq js-indent-level 2))
-
-      (add-hook 'js-mode-hook 'js-custom)
     #+end_src
 *** Markdown Mode
     Enable Markdown mode and setup additional file extensions. Use

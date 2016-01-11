@@ -10,6 +10,7 @@ emacs/.emacs.d/elpa/
 emacs/.emacs.d/javaguirre.el
 emacs/.emacs.d/.cask
 emacs/.emacs.d/recentf
+emacs/.emacs.d/var
 
 # TMUX
 tmux/.tmux/

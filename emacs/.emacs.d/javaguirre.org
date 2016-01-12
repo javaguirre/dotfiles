@@ -70,7 +70,6 @@
                                     evil-nerd-commenter
                                     evil-smartparens
                                     evil-search-highlight-persist
-                                    evil-visual-mark-mode
                                     fill-column-indicator
                                     flycheck
                                     git-gutter
@@ -282,15 +281,6 @@
       (global-evil-surround-mode 1)
     #+end_src
 
-*** Mark
-
-    Show vim/evil marks visually
-
-    #+begin_src emacs-lisp
-      (require 'evil-visual-mark-mode)
-      (evil-visual-mark-mode 1)
-    #+end_src
-
 *** Highlight
 
     Better highlight when searching, like hlsearch in vim
@@ -329,6 +319,13 @@
       (evil-leader/set-key
         "r" 'recentf-open-files
       )
+    #+end_src
+*** Yasnippet
+    #+begin_src emacs-lisp
+      (add-to-list 'load-path
+		    "~/.emacs.d/plugins/yasnippet")
+      (require 'yasnippet)
+      (yas-global-mode 1)
     #+end_src
 
 *** Flycheck
@@ -461,6 +458,7 @@
       (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js-mode))
       (setq web-mode-css-indent-offset 4)
       (setq web-mode-code-indent-offset 4)
+      (setq web-mode-enable-current-column-highlight t)
     #+end_src
 *** YAML
     Add additional file extensions that trigger =yaml-mode=.

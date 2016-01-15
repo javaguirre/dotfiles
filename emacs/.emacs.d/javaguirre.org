@@ -383,9 +383,9 @@
     #+end_src
 *** Indent guide
     #+begin_src emacs-lisp
-      (require 'indent-guide)
-      (indent-guide-global-mode)
-      (setq indent-guide-delay 0.5)
+      ;;(require 'indent-guide)
+      ;;(indent-guide-global-mode)
+      ;;(setq indent-guide-delay 0.5)
     #+end_src
 *** Indentation and buffer cleanup
     This re-indents, untabifies, and cleans up whitespace. It is stolen
@@ -539,5 +539,7 @@
       (global-git-gutter-mode +1)
       (setq git-gutter:modified-sign "~")
       (set-face-foreground 'git-gutter:modified "orange")
+      (evil-leader/set-key
+	   "g" 'git-gutter:next-diff)
     #+end_src
 #+end_src

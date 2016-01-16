@@ -178,8 +178,6 @@
     when a file actually ends. This will put empty line markers into
     the left hand side.
     #+begin_src emacs-lisp
-
-
       (setq-default indicate-empty-lines t)
       (when (not indicate-empty-lines)
         (toggle-indicate-empty-lines))
@@ -214,6 +212,11 @@
     asks. Which it does often. Make it one character.
     #+begin_src emacs-lisp
       (defalias 'yes-or-no-p 'y-or-n-p)
+    #+end_src
+*** Auto revert buffer
+    #+begin_src emacs-lisp
+      (global-auto-revert-mode)
+      (setq auto-revert-verbose nil)
     #+end_src
 *** Misc
     :PROPERTIES:

@@ -343,7 +343,7 @@
     Flycheck
     #+begin_src emacs-lisp
       (add-hook 'after-init-hook #'global-flycheck-mode)
-      '(flycheck-display-errors-delay 0.5)
+      '(flycheck-display-errors-delay 1)
     #+end_src
 *** Rainbow delimiters
     #+begin_src emacs-lisp

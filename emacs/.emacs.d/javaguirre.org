@@ -527,6 +527,8 @@
 
       (evil-leader/set-key
 	   "a" 'helm-projectile-ack)
+      (evil-leader/set-key
+	   "f" 'helm-projectile-find-file-dwim)
     #+end_src
 *** Indent - Rainbow delimiters
     #+begin_src emacs-lisp

@@ -80,6 +80,7 @@
                                     key-chord
                                     indent-guide
                                     markdown-mode
+                                    material-theme
                                     coffee-mode
                                     nginx-mode
                                     org

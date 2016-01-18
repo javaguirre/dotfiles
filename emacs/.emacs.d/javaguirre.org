@@ -545,6 +545,7 @@
     #+begin_src emacs-lisp
       (setq org-time-clocksum-format (quote (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
       (setq org-pretty-entities t)
+      (setq org-startup-folded nil)
     #+end_src
 *** Trailing whitespaces
     #+begin_src emacs-lisp

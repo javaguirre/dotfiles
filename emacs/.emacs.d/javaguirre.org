@@ -58,7 +58,7 @@
     #+begin_src emacs-lisp
       (defvar javaguirre/packages '(ample-theme
                                     auto-complete
-                                    restclient
+                                    col-highlight
                                     dash
                                     deferred
                                     direx
@@ -90,6 +90,7 @@
                                     projectile
                                     rainbow-delimiters
                                     rainbow-mode
+                                    restclient
                                     solarized-theme
                                     smartparens
                                     yasnippet
@@ -368,6 +369,8 @@
     Turn on column numbers.
     #+begin_src emacs-lisp
       (setq column-number-mode t)
+      (setq toggle-highlight-column-when-idle 0.1)
+      ;; (setq col-hightlight-face )
     #+end_src
 *** Temporary file management
     Deal with temporary files. I don't care about them and this makes

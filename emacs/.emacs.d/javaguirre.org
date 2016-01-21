@@ -84,6 +84,7 @@
                                     coffee-mode
                                     nginx-mode
                                     org
+                                    osx-clipboard
                                     package-build
                                     php-mode
                                     web-mode
@@ -339,6 +340,10 @@
       (add-to-list 'yas-snippet-dirs
 		    "~/.emacs.d/snippets")
     #+end_src
+*** OSX Clipboard
+    #+begin_src emacs-lisp
+      (osx-clipboard-mode +1)
+    #+end_src
 
 *** Flycheck
     Flycheck
@@ -516,7 +521,8 @@
 *** Themes
     Load the Ample theme
     #+begin_src emacs-lisp
-      (load-theme 'ample-flat t)
+      ;; (load-theme 'ample-flat t)
+      (load-theme 'material-light t)
     #+end_src
 *** Font
     Font selection

@@ -529,7 +529,7 @@
       (projectile-global-mode)
 
       (evil-leader/set-key
-	   "a" 'helm-projectile-ack)
+	   "a" 'helm-projectile-grep)
       (evil-leader/set-key
 	   "f" 'helm-projectile-find-file-dwim)
     #+end_src

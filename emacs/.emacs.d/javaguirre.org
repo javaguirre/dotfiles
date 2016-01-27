@@ -70,7 +70,6 @@
                                     evil-nerd-commenter
                                     evil-smartparens
                                     evil-search-highlight-persist
-                                    fill-column-indicator
                                     flycheck
                                     git-gutter
                                     goto-chg
@@ -390,16 +389,6 @@
       (require 'auto-complete-config)
       (ac-config-default)
     #+end_src
-*** Fill column indicator
-    Adds a vertical line to control line width
-    #+begin_src emacs-lisp
-      (require 'fill-column-indicator)
-      (setq fci-rule-column 80)
-      (setq fci-rule-character-color "dimgray")
-      (setq fci-rule-color "dimgray")
-      (setq fci-rule-use-dashes t)
-      (add-hook 'prog-mode-hook 'fci-mode)
-    #+end_src
 *** Indent guide
     #+begin_src emacs-lisp
       ;;(require 'indent-guide)
@@ -477,7 +466,6 @@
       (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js-mode))
       (setq web-mode-css-indent-offset 4)
       (setq web-mode-code-indent-offset 4)
-      (setq web-mode-enable-current-column-highlight t)
     #+end_src
 *** YAML
     Add additional file extensions that trigger =yaml-mode=.

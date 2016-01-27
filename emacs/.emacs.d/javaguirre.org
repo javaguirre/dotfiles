@@ -314,6 +314,12 @@
     #+end_src
 
 ** Utilities
+*** Shell
+    #+begin_src emacs-lisp
+      (evil-leader/set-key
+        "s" 'term
+      )
+    #+end_src
 *** Recent files
     #+begin_src emacs-lisp
       (require 'recentf)

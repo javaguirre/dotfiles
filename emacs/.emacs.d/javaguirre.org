@@ -70,6 +70,7 @@
                                     evil-nerd-commenter
                                     evil-smartparens
                                     evil-search-highlight-persist
+                                    fill-column-indicator
                                     flycheck
                                     git-gutter
                                     goto-chg
@@ -349,7 +350,16 @@
     #+begin_src emacs-lisp
       (osx-clipboard-mode +1)
     #+end_src
-
+*** Fill column indicator
+     Adds a vertical line to control line width
+     #+begin_src emacs-lisp
+       (require 'fill-column-indicator)
+       (setq fci-rule-column 80)
+       (setq fci-rule-character-color "dimgray")
+       (setq fci-rule-color "dimgray")
+       (setq fci-rule-use-dashes t)
+       (add-hook 'prog-mode-hook 'fci-mode)
+     #+end_src
 *** Flycheck
     Flycheck
     #+begin_src emacs-lisp
@@ -484,6 +494,7 @@
     #+begin_src emacs-lisp
       (add-to-list 'auto-mode-alist '("\\.inc" . php-mode))
       (add-to-list 'auto-mode-alist '("\\.module" . php-mode))
+      (setq php-manual-path "~/Downloads/php_manual_en")
     #+end_src
 *** CoffeeScript Mode
     The default CoffeeScript mode makes terrible choices. This turns

@@ -6,3 +6,7 @@
 .venv/
 .DS_Store
 TAGS
+
+# Emacs
+.\#*
+\#*\#

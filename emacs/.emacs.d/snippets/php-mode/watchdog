@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: Drupal watchdog
-# key: watch
+# key: dog
 # --
 watchdog('DEBUG', $0);

@@ -3,3 +3,8 @@
 # key: log
 # --
 console.log($0)
+
+# name: Javascript console dir
+# key: dir
+# --
+console.dir($0)

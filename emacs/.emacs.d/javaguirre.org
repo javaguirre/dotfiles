@@ -317,6 +317,11 @@
     #+end_src
 
 ** Utilities
+*** Paradox
+    Modern Emacs Package Menu
+    #+begin_src emacs-lisp
+      (setq paradox-execute-asynchronously t)
+    #+end_src
 *** Shell
     #+begin_src emacs-lisp
       (evil-leader/set-key

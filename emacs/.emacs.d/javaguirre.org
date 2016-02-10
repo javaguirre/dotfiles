@@ -62,7 +62,7 @@
                                     dash
                                     deferred
                                     direx
-                                    highlight
+                                    emmet-mode
                                     epl
                                     evil
                                     evil-leader
@@ -77,6 +77,7 @@
                                     guide-key
                                     helm
                                     helm-projectile
+                                    highlight
                                     key-chord
                                     indent-guide
                                     markdown-mode
@@ -410,6 +411,12 @@
       ;;(require 'indent-guide)
       ;;(indent-guide-global-mode)
       ;;(setq indent-guide-delay 0.5)
+    #+end_src
+*** Emmet mode
+    #+begin_src emacs-lisp
+      (require 'emmet-mode)
+      (add-hook 'sgml-mode-hook 'emmet-mode)
+      (add-hook 'css-mode-hook  'emmet-mode)
     #+end_src
 *** Indentation and buffer cleanup
     This re-indents, untabifies, and cleans up whitespace. It is stolen

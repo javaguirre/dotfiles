@@ -317,6 +317,21 @@
     #+end_src
 
 ** Utilities
+*** Powerline
+    Activates powerline and sets a custom powerline theme
+
+    #+begin_src emacs-lisp
+      (load-file "~/.emacs.d/my-powerline.el")
+
+      (require 'powerline)
+      (require 'powerline-evil)
+      (require 'my-powerline)
+
+      (set-face-attribute 'powerline-evil-normal-face nil :foreground "#EEAD0E")
+
+      (powerline-evil-my-theme)
+    #+end_src
+
 *** Paradox
     Modern Emacs Package Menu
     #+begin_src emacs-lisp

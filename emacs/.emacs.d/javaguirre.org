@@ -89,6 +89,7 @@
                                     package-build
                                     php-mode
                                     web-mode
+                                    paradox
                                     projectile
                                     rainbow-delimiters
                                     rainbow-mode

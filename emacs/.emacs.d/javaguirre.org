@@ -80,6 +80,7 @@
                                     highlight
                                     key-chord
                                     indent-guide
+                                    jedi
                                     markdown-mode
                                     material-theme
                                     nyan-mode
@@ -354,6 +355,12 @@
       (evil-leader/set-key
         "r" 'helm-recentf
       )
+    #+end_src
+*** Jedi
+    Autocompletion for Python
+    #+begin_src emacs-lisp
+      (add-hook 'python-mode-hook 'jedi:setup)
+      (setq jedi:complete-on-dot t)
     #+end_src
 *** Guide key
     #+begin_src emacs-lisp

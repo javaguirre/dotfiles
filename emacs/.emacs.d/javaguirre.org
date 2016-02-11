@@ -347,10 +347,10 @@
     #+begin_src emacs-lisp
       (require 'recentf)
       (recentf-mode 1)
-      (setq recentf-max-menu-items 50)
+      (setq recentf-max-menu-items 200)
 
       (evil-leader/set-key
-        "r" 'recentf-open-files
+        "r" 'helm-recentf
       )
     #+end_src
 *** Guide key

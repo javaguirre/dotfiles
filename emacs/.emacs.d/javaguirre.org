@@ -275,13 +275,9 @@
       (evil-leader/set-key
 	   "d" 'org-time-stamp)
       (evil-leader/set-key
-	   "t" 'org-time-stamp)
-      (evil-leader/set-key
 	   "i" 'org-clock-in)
       (evil-leader/set-key
 	   "o" 'org-clock-out)
-      ;; (evil-leader/set-key
-      ;;      "r" 'org-ctrl-c-ctrl-c)
       (evil-mode 1)
     #+end_src
 
@@ -576,7 +572,14 @@
       (evil-leader/set-key
 	   "a" 'helm-projectile-grep)
       (evil-leader/set-key
+	   "t" 'projectile-find-tag)
+      (evil-leader/set-key
 	   "f" 'helm-projectile-find-file-dwim)
+
+      (setq
+       projectile-tags-command
+       "/usr/local/bin/ctags -Re --langmap=php:.inc.module.install.php --exclude=.git --totals=yes --exclude=vendor -f TAGS"
+      )
     #+end_src
 *** Indent - Rainbow delimiters
     #+begin_src emacs-lisp

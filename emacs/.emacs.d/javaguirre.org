@@ -90,6 +90,8 @@
                                     php-mode
                                     web-mode
                                     paradox
+                                    powerline
+                                    powerline-evil
                                     projectile
                                     rainbow-delimiters
                                     rainbow-mode

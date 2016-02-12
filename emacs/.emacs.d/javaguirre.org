@@ -135,15 +135,16 @@
     :CUSTOM_ID: splash-screen
     :END:
 
-    I want to skip straight to the scratch buffer. This turns off the
-    splash screen and puts me straight into the scratch buffer. I
-    don't really care to have anything in there either, so turn off
-    the message while we're at it. Since I end up using =org-mode=
-    most of the time, set the default mode accordingly.
+    Start with *scratch*
+
     #+begin_src emacs-lisp
       (setq inhibit-splash-screen t
-            initial-scratch-message nil
-            initial-major-mode 'org-mode)
+            initial-scratch-message nil)
+    #+end_src
+*** Desktop save
+    Save session every 30 seconds
+    #+begin_src emacs-lisp
+      (desktop-save-mode 1)
     #+end_src
 *** Scroll bar, Tool bar, Menu bar
     :PROPERTIES:

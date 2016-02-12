@@ -328,10 +328,16 @@
       (evil-leader/set-key
         "-" 'split-window-below
       )
+      (evil-leader/set-key
+        "w" 'ffap-other-window
+      )
     #+end_src
 *** Magit
     #+begin_src emacs-lisp
-        (require 'evil-magit)
+      (require 'evil-magit)
+      (evil-leader/set-key
+        "m" 'magit-status
+      )
     #+end_src
 *** Nyan
     #+begin_src emacs-lisp

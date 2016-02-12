@@ -320,6 +320,15 @@
     #+end_src
 
 ** Utilities
+*** Window management
+    #+begin_src emacs-lisp
+      (evil-leader/set-key
+        "|" 'split-window-right
+      )
+      (evil-leader/set-key
+        "-" 'split-window-below
+      )
+    #+end_src
 *** Magit
     #+begin_src emacs-lisp
         (require 'evil-magit)

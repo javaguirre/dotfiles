@@ -58,6 +58,7 @@
     #+begin_src emacs-lisp
       (defvar javaguirre/packages '(ample-theme
                                     auto-complete
+                                    coffee-mode
                                     col-highlight
                                     dash
                                     deferred
@@ -79,29 +80,26 @@
                                     helm
                                     helm-projectile
                                     highlight
-                                    key-chord
                                     indent-guide
                                     jedi
+                                    key-chord
                                     magit
                                     markdown-mode
                                     material-theme
                                     nyan-mode
-                                    coffee-mode
                                     nginx-mode
                                     org
                                     osx-clipboard
                                     package-build
-                                    php-mode
-                                    web-mode
                                     paradox
-                                    powerline
-                                    powerline-evil
+                                    php-mode
                                     projectile
                                     rainbow-delimiters
                                     rainbow-mode
                                     restclient
-                                    solarized-theme
                                     smartparens
+                                    solarized-theme
+                                    web-mode
                                     yasnippet
                                     yaml-mode)
         "Default packages")

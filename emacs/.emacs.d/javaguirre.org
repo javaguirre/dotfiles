@@ -67,6 +67,7 @@
                                     evil
                                     evil-leader
                                     evil-surround
+                                    evil-magit
                                     evil-nerd-commenter
                                     evil-smartparens
                                     evil-search-highlight-persist
@@ -81,6 +82,7 @@
                                     key-chord
                                     indent-guide
                                     jedi
+                                    magit
                                     markdown-mode
                                     material-theme
                                     nyan-mode
@@ -318,19 +320,9 @@
     #+end_src
 
 ** Utilities
-*** Powerline
-    Activates powerline and sets a custom powerline theme
-
+*** Magit
     #+begin_src emacs-lisp
-      ;; (load-file "~/.emacs.d/my-powerline.el")
-
-      ;; (require 'powerline)
-      ;; (require 'powerline-evil)
-      ;; (require 'my-powerline)
-
-      ;; (set-face-attribute 'powerline-evil-normal-face nil :foreground "#EEAD0E")
-
-      ;; (powerline-evil-my-theme)
+        (require 'evil-magit)
     #+end_src
 *** Nyan
     #+begin_src emacs-lisp

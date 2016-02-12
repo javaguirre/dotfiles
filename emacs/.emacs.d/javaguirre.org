@@ -353,6 +353,10 @@
       (evil-leader/set-key
         "s" 'term
       )
+      (add-hook 'term-mode-hook (lambda()
+        (yas-minor-mode -1)
+        (setq-default show-trailing-whitespace nil)
+      ))
     #+end_src
 *** Recent files
     #+begin_src emacs-lisp

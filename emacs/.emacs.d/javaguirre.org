@@ -347,10 +347,39 @@
       (setq paradox-execute-asynchronously t)
     #+end_src
 *** Shell
+    Ansi-term.
+
     #+begin_src emacs-lisp
       (evil-leader/set-key
-        "s" 'term
+        "s" 'ansi-term
       )
+    #+end_src
+
+    Set default shell to ZSH, killing buffer when exiting
+
+    #+begin_src emacs-lisp
+      (setq term-ansi-default-program "/bin/zsh")
+
+      (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+	(if (memq (process-status proc) '(signal exit))
+	    (let ((buffer (process-buffer proc)))
+		ad-do-it
+		(kill-buffer buffer))
+	    ad-do-it))
+      (ad-activate 'term-sentinel)
+    #+end_src
+
+    Use zsh without asking which program to run
+
+    #+begin_src emacs-lisp
+      (defadvice ansi-term (before force-bash)
+        (interactive (list term-ansi-default-program)))
+      (ad-activate 'ansi-term)
+    #+end_src
+
+    We disable variables and mode clashing with It
+
+    #+begin_src emacs-lisp
       (add-hook 'term-mode-hook (lambda()
         (yas-minor-mode -1)
         (setq-default show-trailing-whitespace nil)

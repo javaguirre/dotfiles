@@ -318,6 +318,10 @@
     #+end_src
 
 ** Utilities
+*** Org mode
+    #+begin_src emacs-lisp
+      (setq org-src-preserve-indentation t)
+    #+end_src
 *** Window management
     #+begin_src emacs-lisp
       (evil-leader/set-key
@@ -381,6 +385,7 @@
 
     #+begin_src emacs-lisp
       (add-hook 'term-mode-hook (lambda()
+        (goto-address-mode)
         (yas-minor-mode -1)
         (setq-default show-trailing-whitespace nil)
       ))

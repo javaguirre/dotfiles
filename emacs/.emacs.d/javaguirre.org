@@ -78,6 +78,7 @@
                                     goto-chg
                                     guide-key
                                     helm
+                                    helm-ag
                                     helm-projectile
                                     highlight
                                     indent-guide
@@ -621,7 +622,7 @@
       (projectile-global-mode)
 
       (evil-leader/set-key
-	   "a" 'helm-projectile-grep)
+	   "a" 'helm-projectile-ag)
       (evil-leader/set-key
 	   "t" 'projectile-find-tag)
       (evil-leader/set-key
@@ -642,6 +643,10 @@
       (global-set-key (kbd "M-x") 'helm-M-x)
       (global-set-key (kbd "C-x C-f") 'helm-find-files)
       (global-set-key (kbd "C-x b") 'helm-buffers-list)
+      (custom-set-variables
+	'(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup --ignore-case")
+	'(helm-ag-command-option "--all-text")
+	'(helm-ag-insert-at-point 'symbol))
     #+end_src
 *** Org mode
     #+begin_src emacs-lisp

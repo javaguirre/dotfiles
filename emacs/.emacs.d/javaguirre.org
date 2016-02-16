@@ -325,6 +325,11 @@
     #+begin_src emacs-lisp
       (setq org-src-preserve-indentation t)
     #+end_src
+*** Direx
+    #+begin_src emacs-lisp
+      (require 'direx)
+      (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+    #+end_src
 *** Window management
     #+begin_src emacs-lisp
       (evil-leader/set-key

@@ -252,6 +252,7 @@
     Evil mode
     #+begin_src emacs-lisp
       (require 'evil)
+      (evil-mode 1)
     #+end_src
 
 *** Keys
@@ -275,13 +276,14 @@
     Org keys
 
     #+begin_src emacs-lisp
-      (evil-leader/set-key
+      (add-hook 'org-mode-hook
+                (lambda ()
+        (evil-leader/set-key
 	   "d" 'org-time-stamp)
-      (evil-leader/set-key
+        (evil-leader/set-key
 	   "i" 'org-clock-in)
-      (evil-leader/set-key
-	   "o" 'org-clock-out)
-      (evil-mode 1)
+        (evil-leader/set-key
+	   "o" 'org-clock-out)))
     #+end_src
 
 *** Surround

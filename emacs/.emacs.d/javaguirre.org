@@ -103,6 +103,7 @@
                                     rainbow-mode
                                     restclient
                                     smartparens
+                                    smart-mode-line
                                     solarized-theme
                                     web-mode
                                     yasnippet
@@ -326,6 +327,13 @@
     #+end_src
 
 ** Utilities
+*** Smart mode line
+    #+begin_src emacs-lisp
+      (setq sml/theme 'light)
+      (setq sml/no-confirm-load-theme t)
+      (sml/setup)
+    #+end_src
+
 *** Org mode
     #+begin_src emacs-lisp
       (setq org-src-preserve-indentation t)

@@ -627,8 +627,8 @@
 *** Font
     Font selection
     #+begin_src emacs-lisp
-      (add-to-list 'default-frame-alist '(font . "Fira Mono for Powerline-12"))
-      (set-face-attribute 'default t :font "Fira Mono for Powerline-12")
+      (add-to-list 'default-frame-alist '(font . "Fira Mono-13"))
+      (set-face-attribute 'default t :font "Fira Mono-13")
     #+end_src
 *** Projectile
     #+begin_src emacs-lisp

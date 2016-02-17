@@ -59,7 +59,8 @@
 
     This is the list of packages used in this configuration.
     #+begin_src emacs-lisp
-      (defvar javaguirre/packages '(ample-theme
+      (defvar javaguirre/packages '(ansible
+                                    ample-theme
                                     auto-complete
                                     coffee-mode
                                     col-highlight
@@ -105,7 +106,8 @@
                                     solarized-theme
                                     web-mode
                                     yasnippet
-                                    yaml-mode)
+                                    yaml-mode
+                                    vagrant)
         "Default packages")
     #+end_src
 *** Install default packages

@@ -28,6 +28,9 @@
    [[http://www.emacswiki.org/emacs/CommonLispForEmacs][Common Lisp for Emacs]].
    #+begin_src emacs-lisp
      (require 'cl)
+     (setenv "PATH"
+	(concat (getenv "PATH")
+	  ":/usr/local/bin"))
    #+end_src
 ** Package Management
    :PROPERTIES:

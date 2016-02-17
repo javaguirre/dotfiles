@@ -363,6 +363,10 @@
     #+begin_src emacs-lisp
       (setq paradox-execute-asynchronously t)
     #+end_src
+*** Vagrant
+    #+begin_src emacs-lisp
+    (setq vagrant-up-options "--provision")
+    #+end_src
 *** Shell
     Ansi-term.
 

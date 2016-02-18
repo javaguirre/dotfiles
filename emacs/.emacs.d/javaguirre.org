@@ -261,6 +261,11 @@
       (require 'evil)
       (evil-mode 1)
     #+end_src
+*** Eval Buffer
+    #+begin_src emacs-lisp
+      (evil-leader/set-key
+	   "e" 'eval-buffer)
+    #+end_src
 
 *** Keys
 

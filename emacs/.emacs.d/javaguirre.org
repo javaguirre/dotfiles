@@ -263,8 +263,13 @@
     #+end_src
 *** Eval Buffer
     #+begin_src emacs-lisp
+      (defun my-eval-buffer ()
+        (interactive)
+        (eval-buffer)
+        (message "Buffer evaluated"))
+
       (evil-leader/set-key
-	   "e" 'eval-buffer)
+	   "e" 'my-eval-buffer)
     #+end_src
 
 *** Keys

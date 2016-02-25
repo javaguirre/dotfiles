@@ -62,6 +62,7 @@
       (defvar javaguirre/packages '(ansible
                                     ample-theme
                                     auto-complete
+                                    codebug
                                     coffee-mode
                                     col-highlight
                                     dash
@@ -363,6 +364,10 @@
       (evil-leader/set-key
         "w" 'ffap-other-window
       )
+    #+end_src
+*** Codebug
+    #+begin_src emacs-lisp
+      (require 'codebug)
     #+end_src
 *** Magit
     #+begin_src emacs-lisp

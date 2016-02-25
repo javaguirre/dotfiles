@@ -603,6 +603,9 @@
       (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js-mode))
       (setq web-mode-css-indent-offset 4)
       (setq web-mode-code-indent-offset 4)
+      (add-hook 'after-change-major-mode-hook
+        (lambda () (if (string= major-mode "web-mode")
+          (turn-off-fci-mode) (turn-on-fci-mode))))
     #+end_src
 *** YAML
     Add additional file extensions that trigger =yaml-mode=.

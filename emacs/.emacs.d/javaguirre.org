@@ -152,7 +152,7 @@
 *** Desktop save
     Save session every 30 seconds
     #+begin_src emacs-lisp
-      (desktop-save-mode 1)
+      ;; (desktop-save-mode 1)
     #+end_src
 *** Scroll bar, Tool bar, Menu bar
     :PROPERTIES:

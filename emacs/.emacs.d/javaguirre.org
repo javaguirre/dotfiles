@@ -87,7 +87,6 @@
                                     helm-projectile
                                     highlight
                                     indent-guide
-                                    jedi
                                     key-chord
                                     magit
                                     markdown-mode

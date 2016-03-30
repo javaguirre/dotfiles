@@ -1,33 +1,46 @@
 "*":
-  welcome:
-    showOnStartup: false
+  "atom-autocomplete-php": {}
+  "atom-beautify": {}
+  "autocomplete-plus": {}
   core:
-    themes: [
-      "one-dark-ui"
-      "ample-syntax"
-    ]
-    projectHome: "/Users/javaguirre/code/github"
-    packagesWithKeymapsDisabled: [
-      "terminal-plus"
-    ]
     disabledPackages: [
       "metrics"
       "go-plus"
       "language-swift"
+      "linter-phpcs"
     ]
+    packagesWithKeymapsDisabled: [
+      "terminal-plus"
+    ]
+    projectHome: "/Users/javaguirre/code/github"
+    themes: [
+      "one-dark-ui"
+      "ample-syntax"
+    ]
+  "ctags-status": {}
+  drupal:
+    fileTypesPhp: "module,install,inc,test"
   editor:
+    fontFamily: "Envy Code R"
+    fontSize: 13
     invisibles: {}
     showIndentGuide: true
-    fontFamily: "Envy Code R"
     tabLength: 4
-    fontSize: 13
-  "vim-mode": {}
+  emmet: {}
+  "exception-reporting":
+    userId: ""
+  "go-plus":
+    goInstallation: "/usr/local/opt/go/libexec"
+    goPath: "/Users/javaguirre/code/go"
+  "highlight-selected": {}
+  "linter-golinter":
+    executablePath: "/Users/javaguirre/code/go/bin/golint"
+  minimap:
+    plugins:
+      "highlight-selected": true
+  "remote-edit": {}
+  "rest-client": {}
   "terminal-plus":
-    core: {}
-    style:
-      fontFamily: "Envy Code R"
-    toggles:
-      autoClose: true
     ansiColors:
       normal:
         blue:
@@ -101,27 +114,15 @@
           green: 255
           blue: 85
           alpha: 1
-  "autocomplete-plus": {}
-  "atom-autocomplete-php": {}
-  emmet: {}
+    core: {}
+    style:
+      fontFamily: "Envy Code R"
+    toggles:
+      autoClose: true
   "todo-show": {}
-  minimap:
-    plugins:
-      "highlight-selected": true
-  "highlight-selected": {}
-  "atom-beautify": {}
-  "remote-edit": {}
-  "ctags-status": {}
-  "rest-client": {}
-  "linter-golinter":
-    executablePath: "/Users/javaguirre/code/go/bin/golint"
-  "go-plus":
-    goPath: "/Users/javaguirre/code/go"
-    goInstallation: "/usr/local/opt/go/libexec"
-  "exception-reporting":
-    userId: "92909795-0858-cf84-4503-b2613eaa9a1f"
-  drupal:
-    fileTypesPhp: "module,install,inc,test"
+  "vim-mode": {}
+  welcome:
+    showOnStartup: false
 ".ini.source":
   editor:
     tabLength: 4

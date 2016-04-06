@@ -171,8 +171,7 @@
     menu bar, and tool bar. There isn't really a reason to have them
     on.
     #+begin_src emacs-lisp
-      ;; (if window-system
-        ;; (scroll-bar-mode -1))
+      (scroll-bar-mode -1)
       (tool-bar-mode -1)
       (menu-bar-mode -1)
       (tooltip-mode -1)

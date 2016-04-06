@@ -148,6 +148,15 @@
       (setq inhibit-splash-screen t
             initial-scratch-message nil)
     #+end_src
+*** Garbage collector threshold
+    Emacs for mac crashes a lot, let see if
+    increasing garbage collector solves the issue
+    
+    The threshold is in bytes
+
+    #+begin_src emacs-lisp
+      (setq gc-cons-threshold 100000000)
+    #+end_src
 *** Desktop save
     Save session every 30 seconds
     #+begin_src emacs-lisp

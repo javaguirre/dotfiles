@@ -6,6 +6,8 @@
 
 * Configuration
   Configuration based on Aaron Bedra's https://github.com/abedra/emacs.d
+
+  Configuration improved from joedicastro's https://github.com/joedicastro/dotfiles/tree/master/emacs
 ** User details
    :PROPERTIES:
    :CUSTOM_ID: user-info
@@ -43,14 +45,24 @@
    everything necessary, the [[http://marmalade-repo.org/][marmalade]], and [[http://melpa.milkbox.net/#][melpa]] repositories are also
    added.
    #+begin_src emacs-lisp
-     (load "package")
-     (package-initialize)
-     (add-to-list 'package-archives
-                  '("marmalade" . "http://marmalade-repo.org/packages/"))
-     (add-to-list 'package-archives
-                  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+     (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                              ("melpa" . "http://melpa.org/packages/")
+                              ("melpa-stable" . "http://stable.melpa.org/packages/")
+                              ("org" . "http://orgmode.org/elpa/")))
 
-     (setq package-archive-enable-alist '(("melpa" deft magit)))
+     ;; avoid problems with files newer than their byte-compiled counterparts
+     ;; it's better a lower startup than load an outdated and maybe bugged package
+     (setq load-prefer-newer t)
+
+     (package-initialize)
+     (when (not package-archive-contents)
+       (package-refresh-contents))
+
+     (unless (package-installed-p 'use-package)
+       (package-install 'use-package))
+
+     (eval-when-compile
+       (require 'use-package))
    #+end_src
 *** Define default packages
     :PROPERTIES:
@@ -110,27 +122,6 @@
                                     yaml-mode
                                     vagrant)
         "Default packages")
-    #+end_src
-*** Install default packages
-    :PROPERTIES:
-    :CUSTOM_ID: package-install
-    :END:
-
-    When Emacs boots, check to make sure all of the packages defined
-    in =javaguirre/packages= are installed. If not, have ELPA take care of
-    it.
-    #+begin_src emacs-lisp
-      (defun javaguirre/packages-installed-p ()
-        (loop for pkg in javaguirre/packages
-              when (not (package-installed-p pkg)) do (return nil)
-              finally (return t)))
-
-      (unless (javaguirre/packages-installed-p)
-        (message "%s" "Refreshing package database...")
-        (package-refresh-contents)
-        (dolist (pkg javaguirre/packages)
-          (when (not (package-installed-p pkg))
-            (package-install pkg))))
     #+end_src
 ** Start-up options
    :PROPERTIES:

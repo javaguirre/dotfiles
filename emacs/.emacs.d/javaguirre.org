@@ -24,12 +24,8 @@
    :CUSTOM_ID: environment
    :END:
 
-   Emacs lisp is really only a subset of common lisp, and I need to
-   have some of the additional functionality to make the configuration
-   and its dependencies work properly, which we get by requiring
-   [[http://www.emacswiki.org/emacs/CommonLispForEmacs][Common Lisp for Emacs]].
+   Set PATH for Emacs
    #+begin_src emacs-lisp
-     (require 'cl)
      (setenv "PATH"
 	(concat (getenv "PATH")
 	  ":/usr/local/bin"))

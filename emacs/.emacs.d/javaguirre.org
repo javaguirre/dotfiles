@@ -144,10 +144,30 @@
     #+begin_src emacs-lisp
       (setq gc-cons-threshold 100000000)
     #+end_src
-*** Desktop save
-    Save session every 30 seconds
+*** Desktop mode
     #+begin_src emacs-lisp
-      ;; (desktop-save-mode 1)
+	(use-package desktop
+          :disabled t
+	  :config
+	  (progn
+	    (setq desktop-path '("~/.emacs.d/tmp/"))
+	    (setq desktop-dirname "~/.emacs.d/tmp/")
+	    (setq desktop-base-file-name "emacs-desktop")
+	    (setq desktop-globals-to-save
+		(append '((extended-command-history . 50)
+			  (file-name-history . 200)
+			  (grep-history . 50)
+			  (compile-history . 50)
+			  (minibuffer-history . 100)
+			  (query-replace-history . 100)
+			  (read-expression-history . 100)
+			  (regexp-history . 100)
+			  (regexp-search-ring . 100)
+			  (search-ring . 50)
+			  (shell-command-history . 50)
+			  tags-file-name
+			  register-alist)))
+	    (desktop-save-mode 1)))
     #+end_src
 *** Scroll bar, Tool bar, Menu bar
     :PROPERTIES:

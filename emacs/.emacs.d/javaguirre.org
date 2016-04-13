@@ -130,17 +130,26 @@
     :END:
 
     Start with *scratch*
-
     #+begin_src emacs-lisp
       (setq inhibit-splash-screen t
+            inhibit-startup-screen t
+            visible-bell t
+            echo-keystrokes 0.1
+            use-dialog-box nil
+            apropos-do-all t
             initial-scratch-message nil)
+      (blink-cursor-mode -1)
+      ;; delete the previous selection when overrides it with a new insertion.
+      (delete-selection-mode)
+      (defalias 'list-buffers 'ibuffer)
+      (toggle-indicate-empty-lines)
+      (show-paren-mode 1)
     #+end_src
 *** Garbage collector threshold
-    Emacs for mac crashes a lot, let see if
+    Emacs for OS X crashes a lot, let see if
     increasing garbage collector solves the issue
-    
-    The threshold is in bytes
 
+    The threshold is in bytes
     #+begin_src emacs-lisp
       (setq gc-cons-threshold 100000000)
     #+end_src
@@ -253,24 +262,6 @@
       (global-auto-revert-mode)
       (setq auto-revert-verbose nil)
     #+end_src
-*** Misc
-    :PROPERTIES:
-    :CUSTOM_ID: misc
-    :END:
-
-    Turn down the time to echo keystrokes so I don't have to wait
-    around for things to happen. Dialog boxes are also a bit annoying,
-    so just have Emacs use the echo area for everything. Beeping is
-    for robots, and I am not a robot. Use a visual indicator instead
-    of making horrible noises. Oh, and always highlight parentheses. A
-    person could go insane without that.
-    #+begin_src emacs-lisp
-      (setq echo-keystrokes 0.1
-            use-dialog-box nil
-            visible-bell t)
-      (show-paren-mode t)
-    #+end_src
-
 ** Evil
     Evil mode
     #+begin_src emacs-lisp

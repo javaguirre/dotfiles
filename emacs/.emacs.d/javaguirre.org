@@ -56,69 +56,6 @@
      (eval-when-compile
        (require 'use-package))
    #+end_src
-*** Define default packages
-    :PROPERTIES:
-    :CUSTOM_ID: default-packages
-    :END:
-
-    This is the list of packages used in this configuration.
-    #+begin_src emacs-lisp
-      (defvar javaguirre/packages '(ansible
-                                    ample-theme
-                                    auto-complete
-                                    codebug
-                                    coffee-mode
-                                    col-highlight
-                                    dash
-                                    deferred
-                                    direx
-                                    emmet-mode
-                                    epl
-                                    evil
-                                    evil-leader
-                                    evil-surround
-                                    evil-magit
-                                    evil-nerd-commenter
-                                    evil-smartparens
-                                    evil-search-highlight-persist
-                                    fill-column-indicator
-                                    flycheck
-                                    git-gutter
-                                    goto-chg
-                                    guide-key
-                                    helm
-                                    helm-ag
-                                    helm-projectile
-                                    highlight
-                                    indent-guide
-                                    key-chord
-                                    magit
-                                    markdown-mode
-                                    material-theme
-                                    nyan-mode
-                                    nginx-mode
-                                    org
-                                    osx-clipboard
-                                    package-build
-                                    paradox
-                                    php-mode
-                                    projectile
-                                    rainbow-delimiters
-                                    rainbow-mode
-                                    restclient
-                                    smartparens
-                                    smart-mode-line
-                                    solarized-theme
-                                    web-mode
-                                    yasnippet
-                                    yaml-mode
-                                    vagrant)
-        "Default packages")
-    #+end_src
-** Start-up options
-   :PROPERTIES:
-   :CUSTOM_ID: start-up-options
-   :END:
 
 ** Default startup options
     :PROPERTIES:

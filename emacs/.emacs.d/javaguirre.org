@@ -478,8 +478,8 @@
         (progn
           (yas-global-mode)
 
-      (add-to-list 'yas-snippet-dirs
-		    "~/.emacs.d/snippets")
+          (add-to-list 'yas-snippet-dirs
+          		    "~/.emacs.d/snippets")))
     #+end_src
 *** OSX Clipboard
     #+begin_src emacs-lisp

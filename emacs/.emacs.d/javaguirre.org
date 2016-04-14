@@ -539,53 +539,34 @@
         (setq-default ispell-program-name "/usr/bin/aspell"))
       (setq-default ispell-list-command "list")
     #+end_src
-** Language Hooks
-   :PROPERTIES:
-   :CUSTOM_ID: languages
-   :END:
-*** shell-script-mode
-    :PROPERTIES:
-    :CUSTOM_ID: shell-script-mode
-    :END:
-    Use =shell-script-mode= for =.zsh= files.
+** Language modes
+*** PHP
     #+begin_src emacs-lisp
-      (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
+      (use-package php-mode
+        :ensure t
+        :config
+        (progn
+          (add-to-list 'auto-mode-alist '("\\.inc" . php-mode))
+          (add-to-list 'auto-mode-alist '("\\.module" . php-mode))
+          (setq php-manual-path "~/Downloads/phpmanualen")))
     #+end_src
-*** conf-mode
-    :PROPERTIES:
-    :CUSTOM_ID: conf-mode
-    :END:
+*** Vagrant
     #+begin_src emacs-lisp
-      (add-to-list 'auto-mode-alist '("\\.gitconfig$" . conf-mode))
-    #+end_src
-*** Web Mode
-    :PROPERTIES:
-    :CUSTOM_ID: web-mode
-    :END:
-
-    #+begin_src emacs-lisp
-      (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-      (add-to-list 'auto-mode-alist '("\\.html\\.twig?\\'" . web-mode))
-      (add-to-list 'auto-mode-alist '("\\.tpl\\.php?\\'" . web-mode))
-      (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js-mode))
-      (setq web-mode-css-indent-offset 4)
-      (setq web-mode-code-indent-offset 4)
-      (add-hook 'after-change-major-mode-hook
-        (lambda () (if (string= major-mode "web-mode")
-          (turn-off-fci-mode) (turn-on-fci-mode))))
+      (use-package vagrant
+        :ensure t
+        :config
+        (setq vagrant-up-options "--provision"))
     #+end_src
 *** YAML
     Add additional file extensions that trigger =yaml-mode=.
     #+begin_src emacs-lisp
-      (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-      (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
-      (setq yaml-indent-offset 2)
-    #+end_src
-*** PHP
-    #+begin_src emacs-lisp
-      (add-to-list 'auto-mode-alist '("\\.inc" . php-mode))
-      (add-to-list 'auto-mode-alist '("\\.module" . php-mode))
-      (setq php-manual-path "~/Downloads/php_manual_en")
+      (use-package yaml-mode
+        :ensure t
+        :config
+        (progn
+          (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+          (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+          (setq yaml-indent-offset 2)))
     #+end_src
 *** CoffeeScript Mode
     The default CoffeeScript mode makes terrible choices. This turns
@@ -597,12 +578,11 @@
       :ensure t
       :config
       (progn
-	(defun coffee-custom ()
+	   (defun coffee-custom ()
 	    "coffee-mode-hook"
 	    (make-local-variable 'tab-width)
 	    (set 'tab-width 2))
-
-	(add-hook 'coffee-mode-hook 'coffee-custom)))
+	   (add-hook 'coffee-mode-hook 'coffee-custom)))
     #+end_src
 *** Markdown Mode
     Enable Markdown mode and setup additional file extensions. Use
@@ -613,87 +593,12 @@
 	  :ensure t
 	  :config
 	  (progn
-	      (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-	      (add-to-list 'auto-mode-alist '("\\.mdown$" . markdown-mode))
-	      (add-hook 'markdown-mode-hook
-			  (lambda ()
-			  (visual-line-mode t)
-			  (writegood-mode t)
-			  (flyspell-mode t)))
-	      (setq markdown-command "pandoc --smart -f markdown -t html")))
-    #+end_src
-*** Font
-    Font selection
-    #+begin_src emacs-lisp
-      (add-to-list 'default-frame-alist '(font . "Source Code Pro for Powerline-12"))
-      (set-face-attribute 'default t :font "Source Code Pro for Powerline-12")
-    #+end_src
-*** Projectile
-    #+begin_src emacs-lisp
-      (use-package projectile
-        :ensure t
-        :config
-        (progn
-	  (projectile-global-mode)
-	    (evil-leader/set-key
-              "a" 'helm-projectile-ag)
-	  (evil-leader/set-key
-              "t" 'projectile-find-tag)
-	  (evil-leader/set-key
-              "f" 'helm-projectile-find-file-dwim)
-	    (setq
-	      projectile-tags-command
-	      "/usr/local/bin/ctags -Re --langmap=php:.inc.module.install.php --exclude=.git --totals=yes --exclude=vendor -f TAGS")))
-    #+end_src
-*** Helm
-    #+begin_src emacs-lisp
-      (use-package helm
-        :ensure t
-        :config
-        (progn
-          (helm-mode 1)
-          (global-set-key (kbd "M-x") 'helm-M-x)
-          (global-set-key (kbd "C-x C-f") 'helm-find-files)
-          (global-set-key (kbd "C-x b") 'helm-buffers-list)
-          (custom-set-variables
-	    '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup --ignore-case")
-	    '(helm-ag-command-option "--all-text")
-	    '(helm-ag-insert-at-point 'symbol))))
-     (use-package helm-ag
-       :ensure t)
-     (use-package helm-projectile
-       :ensure t)
-    #+end_src
-*** Org mode
-    #+begin_src emacs-lisp
-    (use-package org
-      :ensure t
-      :config
-      (progn
-        (setq org-time-clocksum-format (quote (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
-        (setq org-pretty-entities t)
-        (setq org-startup-folded nil)))
-    #+end_src
-*** Git Gutter
-    #+begin_src emacs-lisp
-    (use-package git-gutter
-      :ensure t
-      :config
-      (progn
-	(global-git-gutter-mode +1)
-	(setq git-gutter:modified-sign "~")
-	(set-face-foreground 'git-gutter:modified "orange")
-	(evil-leader/set-key
-	    "g" 'git-gutter:next-hunk)))
-    #+end_src
-
-** Themes
-    #+begin_src emacs-lisp
-    (use-package material-theme
-      :ensure t
-      :config
-      (load-theme 'material-light t))
-    (use-package ample-theme
-      :disabled t
-      :ensure t)
+	    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+	    (add-to-list 'auto-mode-alist '("\\.mdown$" . markdown-mode))
+	    (add-hook 'markdown-mode-hook
+              (lambda ()
+              (visual-line-mode t)
+              (writegood-mode t)
+              (flyspell-mode t)))
+	    (setq markdown-command "pandoc --smart -f markdown -t html")))
     #+end_src

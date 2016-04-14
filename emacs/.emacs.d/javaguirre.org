@@ -27,8 +27,8 @@
    Set PATH for Emacs
    #+begin_src emacs-lisp
      (setenv "PATH"
-	(concat (getenv "PATH")
-	  ":/usr/local/bin"))
+       (concat (getenv "PATH")
+	 ":/usr/local/bin"))
    #+end_src
 ** Package Management
    :PROPERTIES:

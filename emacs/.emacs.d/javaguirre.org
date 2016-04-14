@@ -78,6 +78,12 @@
       (toggle-indicate-empty-lines)
       (show-paren-mode 1)
     #+end_src
+*** Font
+    Font selection
+    #+begin_src emacs-lisp
+      (add-to-list 'default-frame-alist '(font . "Source Code Pro for Powerline-12"))
+      (set-face-attribute 'default t :font "Source Code Pro for Powerline-12")
+    #+end_src
 *** Garbage collector threshold
     Emacs for OS X crashes a lot, let see if
     increasing garbage collector solves the issue

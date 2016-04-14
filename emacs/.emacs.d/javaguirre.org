@@ -752,12 +752,14 @@
 	(evil-leader/set-key
 	    "g" 'git-gutter:next-hunk)))
     #+end_src
-*** Git Gutter
+
+** Themes
     #+begin_src emacs-lisp
-      (global-git-gutter-mode +1)
-      (setq git-gutter:modified-sign "~")
-      (set-face-foreground 'git-gutter:modified "orange")
-      (evil-leader/set-key
-	   "g" 'git-gutter:next-hunk)
+    (use-package material-theme
+      :ensure t
+      :config
+      (load-theme 'material-light t))
+    (use-package ample-theme
+      :disabled t
+      :ensure t)
     #+end_src
-#+end_src

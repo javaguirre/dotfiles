@@ -259,9 +259,21 @@
       (evil-leader/set-key
 	   "b" 'helm-buffers-list)
 
-      (setq key-chord-two-keys-delay 0.5)
-      (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
-      (key-chord-mode 1)
+      (use-package key-chord
+        :ensure t
+        :config
+        (progn
+          (setq key-chord-two-keys-delay 0.5)
+          (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+          (key-chord-mode 1)))
+    #+end_src
+*** Eval Buffer
+    #+begin_src emacs-lisp
+      (evil-leader/set-key
+	   "e" '(lambda ()
+	    (interactive)
+	    (eval-buffer)
+	    (message "Buffer evaluated")))
     #+end_src
 
     Org keys

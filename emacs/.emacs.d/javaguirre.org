@@ -56,12 +56,10 @@
      (eval-when-compile
        (require 'use-package))
    #+end_src
-
 ** Default startup options
     :PROPERTIES:
     :CUSTOM_ID: splash-screen
     :END:
-
     Start with *scratch* and other default options
     #+begin_src emacs-lisp
       (setq inhibit-splash-screen t
@@ -71,11 +69,16 @@
             use-dialog-box nil
             apropos-do-all t
             initial-scratch-message nil)
+
       (blink-cursor-mode -1)
+
       ;; delete the previous selection when overrides it with a new insertion.
       (delete-selection-mode t)
+
       (defalias 'list-buffers 'ibuffer)
+
       (toggle-indicate-empty-lines)
+
       (show-paren-mode 1)
     #+end_src
 *** Font
@@ -91,31 +94,6 @@
     The threshold is in bytes
     #+begin_src emacs-lisp
       (setq gc-cons-threshold 100000000)
-    #+end_src
-*** Desktop mode
-    #+begin_src emacs-lisp
-	(use-package desktop
-          :disabled t
-	  :config
-	  (progn
-	    (setq desktop-path '("~/.emacs.d/tmp/"))
-	    (setq desktop-dirname "~/.emacs.d/tmp/")
-	    (setq desktop-base-file-name "emacs-desktop")
-	    (setq desktop-globals-to-save
-		(append '((extended-command-history . 50)
-			  (file-name-history . 200)
-			  (grep-history . 50)
-			  (compile-history . 50)
-			  (minibuffer-history . 100)
-			  (query-replace-history . 100)
-			  (read-expression-history . 100)
-			  (regexp-history . 100)
-			  (regexp-search-ring . 100)
-			  (search-ring . 50)
-			  (shell-command-history . 50)
-			  tags-file-name
-			  register-alist)))
-	    (desktop-save-mode 1)))
     #+end_src
 *** Remove all bars
     :PROPERTIES:
@@ -141,7 +119,7 @@
     don't share that discomfort with others.
     #+begin_src emacs-lisp
       (setq tab-width 4
-            indent-tabs-mode nil)
+        indent-tabs-mode nil)
     #+end_src
 *** Backup files
     :PROPERTIES:
@@ -163,45 +141,158 @@
     #+begin_src emacs-lisp
       (defalias 'yes-or-no-p 'y-or-n-p)
     #+end_src
+** Themes
+    #+begin_src emacs-lisp
+      (use-package material-theme
+        :ensure t
+        :config
+        (load-theme 'material-light t))
+      (use-package ample-theme
+        :disabled t
+        :ensure t)
+    #+end_src
+** Internal modes
+   Configuration for Emacs internal modules
+*** Desktop mode
+    #+begin_src emacs-lisp
+	(use-package desktop
+          :disabled t
+	  :config
+	  (progn
+	    (setq desktop-path '("~/.emacs.d/tmp/"))
+	    (setq desktop-dirname "~/.emacs.d/tmp/")
+	    (setq desktop-base-file-name "emacs-desktop")
+	    (setq desktop-globals-to-save
+		(append '((extended-command-history . 50)
+			  (file-name-history . 200)
+			  (grep-history . 50)
+			  (compile-history . 50)
+			  (minibuffer-history . 100)
+			  (query-replace-history . 100)
+			  (read-expression-history . 100)
+			  (regexp-history . 100)
+			  (regexp-search-ring . 100)
+			  (search-ring . 50)
+			  (shell-command-history . 50)
+			  tags-file-name
+			  register-alist)))
+	    (desktop-save-mode 1)))
+    #+end_src
 *** Auto revert buffer
     #+begin_src emacs-lisp
       (global-auto-revert-mode)
       (setq auto-revert-verbose nil)
     #+end_src
-** Evil
+** External packages
+*** Org mode
+    #+begin_src emacs-lisp
+    (use-package org
+      :ensure t
+      :config
+      (progn
+        (setq org-time-clocksum-format
+          (quote
+           (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+        (setq org-pretty-entities t)
+        (setq org-src-preserve-indentation t)
+        (setq org-startup-folded nil)))
+    #+end_src
+*** Magit
+    #+begin_src emacs-lisp
+      (use-package magit
+        :ensure t)
+    #+end_src
+*** Highlight
+    Better highlight when searching, like hlsearch in vim
+    #+begin_src emacs-lisp
+      (use-package highlight
+        :ensure t)
+      #+end_src
+*** Evil
     Evil mode
     #+begin_src emacs-lisp
       (use-package evil
         :ensure t
         :config
         (evil-mode 1))
-      (use-package evil-leader
-        :ensure t)
       (use-package evil-surround
         :ensure t)
       (use-package evil-magit
         :ensure t)
       (use-package evil-nerd-commenter
-        :ensure t)
+        :ensure t
+        :config
+        (evilnc-default-hotkeys))
       (use-package evil-smartparens
         :ensure t)
       (use-package evil-search-highlight-persist
-        :ensure t)
+        :ensure t
+        :config
+        (progn
+          (global-evil-search-highlight-persist t)
+          (setq evil-search-highlight-string-min-len 3)))
+      (use-package evil-surround
+        :ensure t
+        :config
+        (global-evil-surround-mode))
     #+end_src
-
-*** Keys
-
-    General keys
-
-    I am using jk to move back to normal mode
-
+*** Evil leader
     #+begin_src emacs-lisp
-      (global-evil-leader-mode)
-      (evil-leader/set-key
-	   "c" 'delete-trailing-whitespace)
-      (evil-leader/set-key
-	   "b" 'helm-buffers-list)
+      (use-package evil-leader
+        :ensure t
+        :config
+        (progn
+          (global-evil-leader-mode)
 
+          (evil-leader/set-key
+	        "c" 'delete-trailing-whitespace)
+
+          ;; Magit
+          (evil-leader/set-key
+            "m" 'magit-status)
+
+          ;; ORG
+          (add-hook 'org-mode-hook
+                    (lambda ()
+            (evil-leader/set-key
+	       "d" 'org-time-stamp)
+            (evil-leader/set-key
+	       "i" 'org-clock-in)
+            (evil-leader/set-key
+	       "o" 'org-clock-out)))
+
+          ;; Evil nerd commenter
+          (evil-leader/set-key
+            "\\" 'evilnc-comment-operator)
+
+          ;; Window split
+          (evil-leader/set-key
+            "|" 'split-window-right)
+          (evil-leader/set-key
+            "-" 'split-window-below)
+          (evil-leader/set-key
+            "w" 'ffap-other-window)
+
+          ;; Helm
+          (evil-leader/set-key
+            "r" 'helm-recentf )
+          (evil-leader/set-key
+	        "b" 'helm-buffers-list)
+
+          ;; Terminal
+          (evil-leader/set-key
+            "s" 'ansi-term)
+
+          ;; Eval buffer
+          (evil-leader/set-key
+	    "e" '(lambda ()
+	    (interactive)
+	    (eval-buffer)
+	    (message "Buffer evaluated")))))
+    #+end_src
+*** Key chord
+    I am using jk to move back to normal mode
+    #+begin_src emacs-lisp
       (use-package key-chord
         :ensure t
         :config
@@ -210,57 +301,12 @@
           (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
           (key-chord-mode 1)))
     #+end_src
-*** Eval Buffer
-    #+begin_src emacs-lisp
-      (evil-leader/set-key
-	   "e" '(lambda ()
-	    (interactive)
-	    (eval-buffer)
-	    (message "Buffer evaluated")))
-    #+end_src
-
-    Org keys
-
-    #+begin_src emacs-lisp
-      (add-hook 'org-mode-hook
-                (lambda ()
-        (evil-leader/set-key
-	   "d" 'org-time-stamp)
-        (evil-leader/set-key
-	   "i" 'org-clock-in)
-        (evil-leader/set-key
-	   "o" 'org-clock-out)))
-    #+end_src
-
-*** Surround
-    #+begin_src emacs-lisp
-      (use-package evil-surround
-        :ensure t
-        :config
-        (global-evil-surround-mode))
-    #+end_src
 *** Rest client
     #+begin_src emacs-lisp
       (use-package restclient
         :ensure t)
       #+end_src
-*** Highlight
-
-    Better highlight when searching, like hlsearch in vim
-
-    #+begin_src emacs-lisp
-      (use-package highlight
-        :ensure t)
-      (use-package evil-search-highlight-persist
-        :ensure t
-        :config
-        (progn
-          (global-evil-search-highlight-persist t)
-          (setq evil-search-highlight-string-min-len 3)))
-      #+end_src
-
 *** Smart parentheses
-
     #+begin_src emacs-lisp
       (use-package smartparens
         :ensure t
@@ -269,17 +315,6 @@
           (smartparens-global-mode t)
           (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)))
     #+end_src
-
-*** Commenter
-
-    #+begin_src emacs-lisp
-      (evilnc-default-hotkeys)
-      (evil-leader/set-key
-        "\\" 'evilnc-comment-operator
-      )
-    #+end_src
-
-** Utilities
 *** Smart mode line
     #+begin_src emacs-lisp
     (use-package smart-mode-line
@@ -289,33 +324,6 @@
         (setq sml/theme 'light)
         (setq sml/no-confirm-load-theme t)
         (sml/setup)))
-    #+end_src
-
-*** Org mode
-    #+begin_src emacs-lisp
-      (setq org-src-preserve-indentation t)
-    #+end_src
-*** Window management
-    #+begin_src emacs-lisp
-      (evil-leader/set-key
-        "|" 'split-window-right
-      )
-      (evil-leader/set-key
-        "-" 'split-window-below
-      )
-      (evil-leader/set-key
-        "w" 'ffap-other-window
-      )
-    #+end_src
-*** Magit
-    #+begin_src emacs-lisp
-      (use-package magit
-        :ensure t)
-      (use-package evil-magit
-        :ensure t)
-      (evil-leader/set-key
-        "m" 'magit-status
-      )
     #+end_src
 *** Nyan
     #+begin_src emacs-lisp
@@ -327,26 +335,14 @@
 *** Paradox
     Modern Emacs Package Menu
     #+begin_src emacs-lisp
-(use-package paradox
-  :ensure t
-  :config
-  (setq paradox-execute-asynchronously t))
-    #+end_src
-*** Vagrant
-    #+begin_src emacs-lisp
-    (setq vagrant-up-options "--provision")
+      (use-package paradox
+        :ensure t
+        :config
+        (setq paradox-execute-asynchronously t))
     #+end_src
 *** Shell
     Ansi-term.
-
-    #+begin_src emacs-lisp
-      (evil-leader/set-key
-        "s" 'ansi-term
-      )
-    #+end_src
-
     Set default shell to ZSH, killing buffer when exiting
-
     #+begin_src emacs-lisp
       (setq term-ansi-default-program "/bin/zsh")
 
@@ -358,41 +354,27 @@
 	    ad-do-it))
       (ad-activate 'term-sentinel)
     #+end_src
-
     Use zsh without asking which program to run
-
     #+begin_src emacs-lisp
       (defadvice ansi-term (before force-bash)
         (interactive (list term-ansi-default-program)))
       (ad-activate 'ansi-term)
     #+end_src
-
     We disable variables and mode clashing with It
-
     #+begin_src emacs-lisp
       (add-hook 'term-mode-hook (lambda()
         (goto-address-mode)
         (yas-minor-mode -1)
-        (setq-default show-trailing-whitespace nil)
-      ))
+        (setq-default show-trailing-whitespace nil)))
     #+end_src
 *** Recent files
     #+begin_src emacs-lisp
-    (use-package recentf
-      :ensure t
-      :config
-      (progn
-        (recentf-mode 1)
-        (setq recentf-max-menu-items 200)
-
-        (evil-leader/set-key
-          "r" 'helm-recentf )))
-    #+end_src
-*** Jedi
-    Autocompletion for Python
-    #+begin_src emacs-lisp
-      ;; (add-hook 'python-mode-hook 'jedi:setup)
-      ;; (setq jedi:complete-on-dot t)
+      (use-package recentf
+        :ensure t
+        :config
+        (progn
+          (recentf-mode 1)
+          (setq recentf-max-menu-items 200)))
     #+end_src
 *** Guide key
     #+begin_src emacs-lisp
@@ -411,9 +393,8 @@
         :config
         (progn
           (yas-global-mode)
-
           (add-to-list 'yas-snippet-dirs
-          		    "~/.emacs.d/snippets")))
+            "~/.emacs.d/snippets")))
     #+end_src
 *** OSX Clipboard
     #+begin_src emacs-lisp
@@ -441,7 +422,55 @@
       :ensure t
       :config
       (add-hook 'after-init-hook #'global-flycheck-mode)
-      '(flycheck-display-errors-delay 1))
+        '(flycheck-display-errors-delay 1))
+    #+end_src
+*** Projectile
+    #+begin_src emacs-lisp
+      (use-package projectile
+        :ensure t
+        :config
+        (progn
+	  (projectile-global-mode)
+	  (evil-leader/set-key
+            "a" 'helm-projectile-ag)
+	  (evil-leader/set-key
+              "t" 'projectile-find-tag)
+	  (evil-leader/set-key
+              "f" 'helm-projectile-find-file-dwim)
+	  (setq
+	    projectile-tags-command
+	    "/usr/local/bin/ctags -Re --langmap=php:.inc.module.install.php --exclude=.git --totals=yes --exclude=vendor -f TAGS")))
+    #+end_src
+*** Helm
+    #+begin_src emacs-lisp
+      (use-package helm
+        :ensure t
+        :config
+        (progn
+          (helm-mode 1)
+          (global-set-key (kbd "M-x") 'helm-M-x)
+          (global-set-key (kbd "C-x C-f") 'helm-find-files)
+          (global-set-key (kbd "C-x b") 'helm-buffers-list)
+          (custom-set-variables
+	    '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup --ignore-case")
+	    '(helm-ag-command-option "--all-text")
+	    '(helm-ag-insert-at-point 'symbol))))
+     (use-package helm-ag
+       :ensure t)
+     (use-package helm-projectile
+       :ensure t)
+    #+end_src
+*** Git Gutter
+    #+begin_src emacs-lisp
+    (use-package git-gutter
+      :ensure t
+      :config
+      (progn
+	(global-git-gutter-mode +1)
+	(setq git-gutter:modified-sign "~")
+	(set-face-foreground 'git-gutter:modified "orange")
+	(evil-leader/set-key
+	  "g" 'git-gutter:next-hunk)))
     #+end_src
 *** Rainbow delimiters
     #+begin_src emacs-lisp
@@ -470,7 +499,6 @@
     #+begin_src emacs-lisp
       (setq column-number-mode t)
       (setq toggle-highlight-column-when-idle 0.1)
-      ;; (setq col-hightlight-face )
     #+end_src
 *** Temporary file management
     Deal with temporary files. I don't care about them and this makes
@@ -529,9 +557,6 @@
       (setq-default show-trailing-whitespace t)
     #+end_src
 *** flyspell
-    The built-in Emacs spell checker. Turn off the welcome flag because
-    it is annoying and breaks on quite a few systems. Specify the
-    location of the spell check program so it loads properly.
     #+begin_src emacs-lisp
       (setq flyspell-issue-welcome-flag nil)
       (if (eq system-type 'darwin)

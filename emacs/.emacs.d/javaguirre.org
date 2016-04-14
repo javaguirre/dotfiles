@@ -291,27 +291,40 @@
 
 *** Surround
     #+begin_src emacs-lisp
-      (require 'evil-surround)
-      (global-evil-surround-mode 1)
+      (use-package evil-surround
+        :ensure t
+        :config
+        (global-evil-surround-mode))
     #+end_src
-
+*** Rest client
+    #+begin_src emacs-lisp
+      (use-package restclient
+        :ensure t)
+      #+end_src
 *** Highlight
 
     Better highlight when searching, like hlsearch in vim
 
     #+begin_src emacs-lisp
-      (require 'highlight)
-      (require 'evil-search-highlight-persist)
-      (global-evil-search-highlight-persist t)
-      (setq evil-search-highlight-string-min-len 3)
-    #+end_src
+      (use-package highlight
+        :ensure t)
+      (use-package evil-search-highlight-persist
+        :ensure t
+        :config
+        (progn
+          (global-evil-search-highlight-persist t)
+          (setq evil-search-highlight-string-min-len 3)))
+      #+end_src
 
 *** Smart parentheses
 
     #+begin_src emacs-lisp
-      (require 'smartparens-config)
-      (smartparens-global-mode t)
-      (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+      (use-package smartparens
+        :ensure t
+        :config
+	(progn
+          (smartparens-global-mode t)
+          (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)))
     #+end_src
 
 *** Commenter
@@ -326,9 +339,13 @@
 ** Utilities
 *** Smart mode line
     #+begin_src emacs-lisp
-      (setq sml/theme 'light)
-      (setq sml/no-confirm-load-theme t)
-      (sml/setup)
+    (use-package smart-mode-line
+      :ensure t
+      :config
+      (progn
+        (setq sml/theme 'light)
+        (setq sml/no-confirm-load-theme t)
+        (sml/setup)))
     #+end_src
 
 *** Org mode
@@ -358,19 +375,28 @@
     #+end_src
 *** Magit
     #+begin_src emacs-lisp
-      (require 'evil-magit)
+      (use-package magit
+        :ensure t)
+      (use-package evil-magit
+        :ensure t)
       (evil-leader/set-key
         "m" 'magit-status
       )
     #+end_src
 *** Nyan
     #+begin_src emacs-lisp
-        (nyan-mode t)
+    (use-package nyan-mode
+      :ensure t
+      :config
+      (nyan-mode t))
     #+end_src
 *** Paradox
     Modern Emacs Package Menu
     #+begin_src emacs-lisp
-      (setq paradox-execute-asynchronously t)
+(use-package paradox
+  :ensure t
+  :config
+  (setq paradox-execute-asynchronously t))
     #+end_src
 *** Vagrant
     #+begin_src emacs-lisp
@@ -418,13 +444,15 @@
     #+end_src
 *** Recent files
     #+begin_src emacs-lisp
-      (require 'recentf)
-      (recentf-mode 1)
-      (setq recentf-max-menu-items 200)
+    (use-package recentf
+      :ensure t
+      :config
+      (progn
+        (recentf-mode 1)
+        (setq recentf-max-menu-items 200)
 
-      (evil-leader/set-key
-        "r" 'helm-recentf
-      )
+        (evil-leader/set-key
+          "r" 'helm-recentf )))
     #+end_src
 *** Jedi
     Autocompletion for Python
@@ -434,42 +462,59 @@
     #+end_src
 *** Guide key
     #+begin_src emacs-lisp
-      (require 'guide-key)
-      (setq guide-key/guide-key-sequence
-       '("C-x r" "C-x 4" "C-x v"))
-      (guide-key-mode 1)
+      (use-package guide-key
+        :ensure t
+        :config
+        (progn
+          (setq guide-key/guide-key-sequence
+           '("C-x r" "C-x 4" "C-x v"))
+          (guide-key-mode 1)))
     #+end_src
 *** Yasnippet
     #+begin_src emacs-lisp
-      (require 'yasnippet)
-      (yas-global-mode)
+      (use-package yasnippet
+        :ensure t
+        :config
+        (progn
+          (yas-global-mode)
 
       (add-to-list 'yas-snippet-dirs
 		    "~/.emacs.d/snippets")
     #+end_src
 *** OSX Clipboard
     #+begin_src emacs-lisp
-      (osx-clipboard-mode +1)
+    (use-package osx-clipboard
+      :ensure t
+      :config
+      (osx-clipboard-mode +1))
     #+end_src
 *** Fill column indicator
      Adds a vertical line to control line width
      #+begin_src emacs-lisp
-       (require 'fill-column-indicator)
-       (setq fci-rule-column 80)
-       (setq fci-rule-character-color "dimgray")
-       (setq fci-rule-color "dimgray")
-       (setq fci-rule-use-dashes t)
-       (add-hook 'prog-mode-hook 'fci-mode)
+       (use-package fill-column-indicator
+         :ensure t
+         :config
+         (progn
+           (setq fci-rule-column 80)
+           (setq fci-rule-character-color "dimgray")
+           (setq fci-rule-color "dimgray")
+           (setq fci-rule-use-dashes t)
+           (add-hook 'prog-mode-hook 'fci-mode)))
      #+end_src
 *** Flycheck
-    Flycheck
     #+begin_src emacs-lisp
+    (use-package flycheck
+      :ensure t
+      :config
       (add-hook 'after-init-hook #'global-flycheck-mode)
-      '(flycheck-display-errors-delay 1)
+      '(flycheck-display-errors-delay 1))
     #+end_src
 *** Rainbow delimiters
     #+begin_src emacs-lisp
-      (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+    (use-package rainbow-delimiters
+      :ensure t
+      :config
+      (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
     #+end_src
 *** Ido
     =Ido= mode provides a nice way to navigate the filesystem. This is
@@ -503,20 +548,21 @@
 *** auto-complete
     Turn on auto complete.
     #+begin_src emacs-lisp
-      (require 'auto-complete-config)
-      (ac-config-default)
-    #+end_src
-*** Indent guide
-    #+begin_src emacs-lisp
-      ;;(require 'indent-guide)
-      ;;(indent-guide-global-mode)
-      ;;(setq indent-guide-delay 0.5)
+      (use-package auto-complete
+        :ensure t
+        :config
+        (progn
+          (require 'auto-complete-config)
+          (ac-config-default)))
     #+end_src
 *** Emmet mode
     #+begin_src emacs-lisp
-      (require 'emmet-mode)
-      (add-hook 'sgml-mode-hook 'emmet-mode)
-      (add-hook 'css-mode-hook  'emmet-mode)
+      (use-package emmet-mode
+        :ensure t
+        :config
+        (progn
+          (add-hook 'sgml-mode-hook 'emmet-mode)
+          (add-hook 'css-mode-hook  'emmet-mode)))
     #+end_src
 *** Indentation and buffer cleanup
     This re-indents, untabifies, and cleans up whitespace. It is stolen
@@ -613,32 +659,34 @@
     functions rather than causing you indentation errors every time you
     modify a file.
     #+begin_src emacs-lisp
-      (defun coffee-custom ()
-        "coffee-mode-hook"
-        (make-local-variable 'tab-width)
-        (set 'tab-width 2))
+    (use-package coffee-mode
+      :ensure t
+      :config
+      (progn
+	(defun coffee-custom ()
+	    "coffee-mode-hook"
+	    (make-local-variable 'tab-width)
+	    (set 'tab-width 2))
 
-      (add-hook 'coffee-mode-hook 'coffee-custom)
+	(add-hook 'coffee-mode-hook 'coffee-custom)))
     #+end_src
 *** Markdown Mode
     Enable Markdown mode and setup additional file extensions. Use
     pandoc to generate HTML previews from within the mode, and use a
     custom css file to make it a little prettier.
     #+begin_src emacs-lisp
-      (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-      (add-to-list 'auto-mode-alist '("\\.mdown$" . markdown-mode))
-      (add-hook 'markdown-mode-hook
-                (lambda ()
-                  (visual-line-mode t)
-                  (writegood-mode t)
-                  (flyspell-mode t)))
-      (setq markdown-command "pandoc --smart -f markdown -t html")
-    #+end_src
-*** Themes
-    Load the Ample theme
-    #+begin_src emacs-lisp
-      ;; (load-theme 'ample-flat t)
-      (load-theme 'material-light t)
+	(use-package markdown-mode
+	  :ensure t
+	  :config
+	  (progn
+	      (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+	      (add-to-list 'auto-mode-alist '("\\.mdown$" . markdown-mode))
+	      (add-hook 'markdown-mode-hook
+			  (lambda ()
+			  (visual-line-mode t)
+			  (writegood-mode t)
+			  (flyspell-mode t)))
+	      (setq markdown-command "pandoc --smart -f markdown -t html")))
     #+end_src
 *** Font
     Font selection
@@ -648,44 +696,61 @@
     #+end_src
 *** Projectile
     #+begin_src emacs-lisp
-      (projectile-global-mode)
-
-      (evil-leader/set-key
-	   "a" 'helm-projectile-ag)
-      (evil-leader/set-key
-	   "t" 'projectile-find-tag)
-      (evil-leader/set-key
-	   "f" 'helm-projectile-find-file-dwim)
-
-      (setq
-       projectile-tags-command
-       "/usr/local/bin/ctags -Re --langmap=php:.inc.module.install.php --exclude=.git --totals=yes --exclude=vendor -f TAGS"
-      )
-    #+end_src
-*** Indent - Rainbow delimiters
-    #+begin_src emacs-lisp
-      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+      (use-package projectile
+        :ensure t
+        :config
+        (progn
+	  (projectile-global-mode)
+	    (evil-leader/set-key
+              "a" 'helm-projectile-ag)
+	  (evil-leader/set-key
+              "t" 'projectile-find-tag)
+	  (evil-leader/set-key
+              "f" 'helm-projectile-find-file-dwim)
+	    (setq
+	      projectile-tags-command
+	      "/usr/local/bin/ctags -Re --langmap=php:.inc.module.install.php --exclude=.git --totals=yes --exclude=vendor -f TAGS")))
     #+end_src
 *** Helm
     #+begin_src emacs-lisp
-      (helm-mode 1)
-      (global-set-key (kbd "M-x") 'helm-M-x)
-      (global-set-key (kbd "C-x C-f") 'helm-find-files)
-      (global-set-key (kbd "C-x b") 'helm-buffers-list)
-      (custom-set-variables
-	'(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup --ignore-case")
-	'(helm-ag-command-option "--all-text")
-	'(helm-ag-insert-at-point 'symbol))
+      (use-package helm
+        :ensure t
+        :config
+        (progn
+          (helm-mode 1)
+          (global-set-key (kbd "M-x") 'helm-M-x)
+          (global-set-key (kbd "C-x C-f") 'helm-find-files)
+          (global-set-key (kbd "C-x b") 'helm-buffers-list)
+          (custom-set-variables
+	    '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup --ignore-case")
+	    '(helm-ag-command-option "--all-text")
+	    '(helm-ag-insert-at-point 'symbol))))
+     (use-package helm-ag
+       :ensure t)
+     (use-package helm-projectile
+       :ensure t)
     #+end_src
 *** Org mode
     #+begin_src emacs-lisp
-      (setq org-time-clocksum-format (quote (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
-      (setq org-pretty-entities t)
-      (setq org-startup-folded nil)
+    (use-package org
+      :ensure t
+      :config
+      (progn
+        (setq org-time-clocksum-format (quote (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+        (setq org-pretty-entities t)
+        (setq org-startup-folded nil)))
     #+end_src
-*** Trailing whitespaces
+*** Git Gutter
     #+begin_src emacs-lisp
-      (setq-default show-trailing-whitespace t)
+    (use-package git-gutter
+      :ensure t
+      :config
+      (progn
+	(global-git-gutter-mode +1)
+	(setq git-gutter:modified-sign "~")
+	(set-face-foreground 'git-gutter:modified "orange")
+	(evil-leader/set-key
+	    "g" 'git-gutter:next-hunk)))
     #+end_src
 *** Git Gutter
     #+begin_src emacs-lisp

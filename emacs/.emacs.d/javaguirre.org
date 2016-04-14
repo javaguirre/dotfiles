@@ -228,16 +228,22 @@
 ** Evil
     Evil mode
     #+begin_src emacs-lisp
-      (require 'evil)
-      (evil-mode 1)
-    #+end_src
-*** Eval Buffer
-    #+begin_src emacs-lisp
-      (evil-leader/set-key
-	   "e" '(lambda ()
-	    (interactive)
-	    (eval-buffer)
-	    (message "Buffer evaluated")))
+      (use-package evil
+        :ensure t
+        :config
+        (evil-mode 1))
+      (use-package evil-leader
+        :ensure t)
+      (use-package evil-surround
+        :ensure t)
+      (use-package evil-magit
+        :ensure t)
+      (use-package evil-nerd-commenter
+        :ensure t)
+      (use-package evil-smartparens
+        :ensure t)
+      (use-package evil-search-highlight-persist
+        :ensure t)
     #+end_src
 
 *** Keys

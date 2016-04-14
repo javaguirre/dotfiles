@@ -352,11 +352,6 @@
     #+begin_src emacs-lisp
       (setq org-src-preserve-indentation t)
     #+end_src
-*** Direx
-    #+begin_src emacs-lisp
-      (require 'direx)
-      (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
-    #+end_src
 *** Window management
     #+begin_src emacs-lisp
       (evil-leader/set-key
@@ -368,10 +363,6 @@
       (evil-leader/set-key
         "w" 'ffap-other-window
       )
-    #+end_src
-*** Codebug
-    #+begin_src emacs-lisp
-      (require 'codebug)
     #+end_src
 *** Magit
     #+begin_src emacs-lisp
@@ -457,8 +448,8 @@
 *** Jedi
     Autocompletion for Python
     #+begin_src emacs-lisp
-      (add-hook 'python-mode-hook 'jedi:setup)
-      (setq jedi:complete-on-dot t)
+      ;; (add-hook 'python-mode-hook 'jedi:setup)
+      ;; (setq jedi:complete-on-dot t)
     #+end_src
 *** Guide key
     #+begin_src emacs-lisp

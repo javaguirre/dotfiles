@@ -32,3 +32,6 @@
 '.platform-darwin atom-workspace':
   'cmd-t': 'terminal-plus:toggle'
   'shift-cmd-X': 'terminal-plus:close'
+
+'.editor.vim-mode.insert-mode':
+  'k': 'exit-insert-mode-if-preceded-by-j'

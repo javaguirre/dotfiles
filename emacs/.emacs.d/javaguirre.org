@@ -35,11 +35,7 @@
    :CUSTOM_ID: package-management
    :END:
 
-   Since Emacs 24, Emacs includes the Emacs Lisp Package Archive
-   ([[http://www.emacswiki.org/emacs/ELPA][ELPA]]) by default. This provides a nice way to install additional
-   packages. Since the default package archive doesn't include
-   everything necessary, the [[http://marmalade-repo.org/][marmalade]], and [[http://melpa.milkbox.net/#][melpa]] repositories are also
-   added.
+   We use use-package to install packages and manage the configuration
    #+begin_src emacs-lisp
      (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                               ("melpa" . "http://melpa.org/packages/")

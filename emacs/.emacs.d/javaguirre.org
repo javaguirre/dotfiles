@@ -565,6 +565,23 @@
       (setq-default ispell-list-command "list")
     #+end_src
 ** Language modes
+*** Web
+    #+begin_src emacs-lisp
+      (use-package web-mode
+        :ensure t
+        :mode ("\\.html?\\'" . web-mode)
+        :mode ("\\.html\\.twig?\\'" . web-mode)
+        :mode ("\\.tpl\\.php?\\'" . web-mode)
+        :mode ("\\.jsx?\\'" . web-mode)
+        :config
+        (progn
+	 (setq web-mode-css-indent-offset 4)
+	 (setq web-mode-code-indent-offset 4)
+	 (add-hook 'after-change-major-mode-hook
+	  (lambda () (if (string= major-mode "web-mode")
+	      (turn-off-fci-mode) (turn-on-fci-mode))))))
+    #+end_src
+
 *** PHP
     #+begin_src emacs-lisp
       (use-package php-mode

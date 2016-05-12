@@ -15,16 +15,19 @@
     projectHome: "/Users/javaguirre/code/github"
     themes: [
       "one-dark-ui"
-      "ample-syntax"
+      "atom-material-syntax-light"
     ]
   "ctags-status": {}
   drupal:
     fileTypesPhp: "module,install,inc,test"
   editor:
-    fontFamily: "Envy Code R"
-    fontSize: 13
-    invisibles: {}
+    fontFamily: "Source Code Pro"
+    fontSize: 12
+    invisibles:
+      cr: " "
+      eol: " "
     showIndentGuide: true
+    showInvisibles: true
     tabLength: 4
   emmet: {}
   "exception-reporting":
@@ -38,6 +41,7 @@
   minimap:
     plugins:
       "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
   "remote-edit": {}
   "rest-client": {}
   "terminal-plus":
@@ -116,11 +120,12 @@
           alpha: 1
     core: {}
     style:
-      fontFamily: "Envy Code R"
+      fontFamily: "Source Code Pro for Powerline"
     toggles:
       autoClose: true
   "todo-show": {}
-  "vim-mode": {}
+  "vim-mode":
+    useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
 ".ini.source":

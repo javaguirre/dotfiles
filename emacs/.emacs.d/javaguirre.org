@@ -581,7 +581,13 @@
 	  (lambda () (if (string= major-mode "web-mode")
 	      (turn-off-fci-mode) (turn-on-fci-mode))))))
     #+end_src
-
+*** Javascript
+    #+begin_src emacs-lisp
+      (use-package js2-mode
+        :ensure t
+        :config
+          (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
+    #+end_src
 *** PHP
     #+begin_src emacs-lisp
       (use-package php-mode

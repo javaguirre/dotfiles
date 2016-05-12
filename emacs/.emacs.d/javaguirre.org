@@ -118,8 +118,8 @@
     There's nothing I dislike more than tabs in my files. Make sure I
     don't share that discomfort with others.
     #+begin_src emacs-lisp
-      (setq tab-width 4
-        indent-tabs-mode nil)
+      (setq-default indent-tabs-mode nil)
+      (setq tab-width 4)
     #+end_src
 *** Backup files
     :PROPERTIES:

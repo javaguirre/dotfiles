@@ -19,17 +19,6 @@
      (setq user-full-name "Javier Aguirre")
      (setq user-mail-address "hello@javaguirre.net")
    #+end_src
-** Environment
-   :PROPERTIES:
-   :CUSTOM_ID: environment
-   :END:
-
-   Set PATH for Emacs
-   #+begin_src emacs-lisp
-     (setenv "PATH"
-       (concat (getenv "PATH")
-	 ":/usr/local/bin"))
-   #+end_src
 ** Package Management
    :PROPERTIES:
    :CUSTOM_ID: package-management
@@ -55,6 +44,21 @@
 
      (eval-when-compile
        (require 'use-package))
+
+   #+end_src
+** Environment
+   :PROPERTIES:
+   :CUSTOM_ID: environment
+   :END:
+
+   Set PATH for Emacs
+   #+begin_src emacs-lisp
+     (use-package exec-path-from-shell
+      :ensure t
+      :config
+      (progn
+       (when (memq window-system '(mac ns))
+        (exec-path-from-shell-initialize))))
    #+end_src
 ** Default startup options
     :PROPERTIES:

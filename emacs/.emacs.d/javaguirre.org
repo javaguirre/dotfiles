@@ -512,15 +512,14 @@
       (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
       (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
     #+end_src
-*** auto-complete
-    Turn on auto complete.
+*** Company mode
+    Company mode
     #+begin_src emacs-lisp
-      (use-package auto-complete
+      (use-package company
         :ensure t
         :config
         (progn
-          (require 'auto-complete-config)
-          (ac-config-default)))
+          (add-hook 'after-init-hook 'global-company-mode)))
     #+end_src
 *** Emmet mode
     #+begin_src emacs-lisp

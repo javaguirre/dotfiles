@@ -200,7 +200,8 @@
            (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
         (setq org-pretty-entities t)
         (setq org-src-preserve-indentation t)
-        (setq org-startup-folded nil)))
+        (setq org-startup-folded nil)
+        (setq org-src-tab-acts-natively t)))
     #+end_src
 *** Magit
     #+begin_src emacs-lisp

@@ -636,6 +636,12 @@
           (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
           (setq yaml-indent-offset 2)))
     #+end_src
+*** HAML
+    The template engine
+    #+begin_src emacs-lisp
+      (use-package haml-mode
+        :ensure t)
+    #+end_src
 *** CoffeeScript Mode
     The default CoffeeScript mode makes terrible choices. This turns
     everything into 2 space indentations and makes it so the mode

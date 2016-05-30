@@ -294,7 +294,13 @@
 	    "e" '(lambda ()
 	    (interactive)
 	    (eval-buffer)
-	    (message "Buffer evaluated")))))
+	    (message "Buffer evaluated")))
+
+          ;; Increase and decrease text
+          (evil-leader/set-key
+            "+" 'text-scale-increase)
+          (evil-leader/set-key
+            "-" 'text-scale-decrease)))
     #+end_src
 *** Key chord
     I am using jk to move back to normal mode

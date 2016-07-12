@@ -8,6 +8,8 @@
       "go-plus"
       "language-swift"
       "linter-phpcs"
+      "autocomplete-python"
+      "minimap"
     ]
     packagesWithKeymapsDisabled: [
       "terminal-plus"
@@ -21,7 +23,7 @@
   drupal:
     fileTypesPhp: "module,install,inc,test"
   editor:
-    fontFamily: "Source Code Pro"
+    fontFamily: "Mononoki"
     fontSize: 12
     invisibles:
       cr: " "
@@ -31,13 +33,19 @@
     tabLength: 4
   emmet: {}
   "exception-reporting":
-    userId: ""
+    userId: "69de5860-5660-7590-fba3-d26130e8ad91"
   "go-plus":
     goInstallation: "/usr/local/opt/go/libexec"
     goPath: "/Users/javaguirre/code/go"
   "highlight-selected": {}
+  linter:
+    showErrorPanel: false
   "linter-golinter":
     executablePath: "/Users/javaguirre/code/go/bin/golint"
+  "linter-pep8":
+    ignoreErrorCodes: [
+      "E265"
+    ]
   minimap:
     plugins:
       "highlight-selected": true
@@ -128,6 +136,12 @@
     useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
+".console.python.text":
+  editor:
+    tabLength: 4
 ".ini.source":
+  editor:
+    tabLength: 4
+".python.text.traceback":
   editor:
     tabLength: 4

@@ -27,6 +27,20 @@
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 'body':
   'shift-cmd-T': 'pane:reopen-closed-item'
+  '\\ f': 'fuzzy-finder:toggle-file-finder'
+  '\\ r': 'fuzzy-finder:toggle-file-finder'
+  '\\ p': 'command-palette:toggle'
+  '\\ a': 'fuzzy-grep:toggle'
+  '\\ b': 'pane:show-previous-item'
+  '\\ |': 'pane:split-left'
+  '\\ -': 'pane:split-down'
+  '\\ c': 'whitespace:remove-trailing-whitespace'
+
+'atom-workspace':
+  'ctrl-i':     'cursor-history:next'
+  'ctrl-o':     'cursor-history:prev'
+  'ctrl-cmd-i': 'cursor-history:next-within-editor'
+  'ctrl-cmd-o': 'cursor-history:prev-within-editor'
 
 # Terminal plus
 '.platform-darwin atom-workspace':

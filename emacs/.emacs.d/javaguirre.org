@@ -342,7 +342,8 @@
     (use-package nyan-mode
       :ensure t
       :config
-      (nyan-mode t))
+      (when (display-graphic-p)
+        (nyan-mode t)))
     #+end_src
 *** Paradox
     Modern Emacs Package Menu
@@ -591,6 +592,11 @@
       (setq-default ispell-list-command "list")
     #+end_src
 ** Language modes
+*** Python
+    #+begin_src emacs-lisp
+      (with-eval-after-load 'evil
+        (defalias #'forward-evil-word #'forward-evil-symbol))
+    #+end_src
 *** Web
     #+begin_src emacs-lisp
       (use-package web-mode

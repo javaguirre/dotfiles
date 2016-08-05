@@ -183,6 +183,10 @@
 			  register-alist)))
 	    (desktop-save-mode 1)))
     #+end_src
+*** Which func mode
+    #+begin_src emacs-lisp
+      (which-function-mode t)
+    #+end_src
 *** Auto revert buffer
     #+begin_src emacs-lisp
       (global-auto-revert-mode)
@@ -327,20 +331,18 @@
           (smartparens-global-mode t)
           (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)))
     #+end_src
-*** Smart mode line
+*** Powerline
     #+begin_src emacs-lisp
-    (use-package smart-mode-line
+    (use-package powerline
       :ensure t
       :config
-      (progn
-        (setq sml/theme 'light)
-        (setq sml/no-confirm-load-theme t)
-        (sml/setup)))
+      (powerline-default-theme))
     #+end_src
 *** Nyan
     #+begin_src emacs-lisp
     (use-package nyan-mode
       :ensure t
+      :disabled t
       :config
       (when (display-graphic-p)
         (nyan-mode t)))

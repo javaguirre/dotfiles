@@ -69,7 +69,7 @@
     #+begin_src emacs-lisp
       (setq inhibit-splash-screen t
             inhibit-startup-screen t
-            visible-bell t
+            visible-bell nil
             echo-keystrokes 0.1
             use-dialog-box nil
             apropos-do-all t

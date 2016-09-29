@@ -456,7 +456,7 @@
         :config
         (progn
 	  (projectile-global-mode)
-      (setq helm-projectile-fuzzy-match nil)
+          (setq projectile-enable-caching t)
 	  (evil-leader/set-key
             "a" 'helm-projectile-ag)
 	  (evil-leader/set-key

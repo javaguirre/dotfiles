@@ -486,6 +486,17 @@
      (use-package helm-projectile
        :ensure t)
     #+end_src
+*** Dumb Jump
+    #+begin_src emacs-lisp
+      (use-package dumb-jump
+        :ensure t
+        :config
+        (progn
+	 (evil-leader/set-key
+	  "d" 'dumb-jump-go)
+	 (evil-leader/set-key
+	  "q" 'dumb-jump-quick-look)))
+    #+end_src
 *** Git Gutter
     #+begin_src emacs-lisp
     (use-package git-gutter

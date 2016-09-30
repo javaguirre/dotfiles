@@ -199,6 +199,7 @@
       :ensure t
       :config
       (progn
+        (setq org-src-fontify-natively t)
         (setq org-time-clocksum-format
           (quote
            (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))

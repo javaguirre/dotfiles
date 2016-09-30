@@ -33,3 +33,6 @@ export PYTHONSTARTUP=$HOME/.pythonrc
 export RBENV="$HOME/.rbenv/bin"
 export PATH=$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$GOROOT/bin":"$COFFEEPATH":"$NODE_MODULES":$GOPATH/bin:"$ANDROID_SDK/platform-tools"
 export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8

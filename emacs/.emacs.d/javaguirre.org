@@ -267,56 +267,28 @@
           (global-evil-leader-mode)
 
           (evil-leader/set-key
-	        "c" 'delete-trailing-whitespace)
-
-          ;; Magit
-          (evil-leader/set-key
-            "m" 'magit-status)
+           "b"  'helm-buffers-list
+           "c"  'delete-trailing-whitespace
+	       "e"  '(lambda ()
+	              (interactive)
+	              (eval-buffer)
+	              (message "Buffer evaluated"))
+           "m"  'magit-status
+           "r"  'helm-recentf
+           "s"  'ansi-term
+           "w"  'ffap-other-window
+           "\\" 'evilnc-comment-operator
+           "|"  'split-window-right
+           "-"  'split-window-below
+           "+"  'text-scale-increase
+           "-"  'text-scale-decrease)
 
           ;; ORG
-          (add-hook 'org-mode-hook
-                    (lambda ()
-            (evil-leader/set-key
-	       "d" 'org-time-stamp)
-            (evil-leader/set-key
-	       "i" 'org-clock-in)
-            (evil-leader/set-key
-	       "o" 'org-clock-out)))
+          (evil-leader/set-key-for-mode 'org
+           "d" 'org-time-stamp
+           "i" 'org-clock-in
+           "o" 'org-clock-out)))
 
-          ;; Evil nerd commenter
-          (evil-leader/set-key
-            "\\" 'evilnc-comment-operator)
-
-          ;; Window split
-          (evil-leader/set-key
-            "|" 'split-window-right)
-          (evil-leader/set-key
-            "-" 'split-window-below)
-          (evil-leader/set-key
-            "w" 'ffap-other-window)
-
-          ;; Helm
-          (evil-leader/set-key
-            "r" 'helm-recentf )
-          (evil-leader/set-key
-	        "b" 'helm-buffers-list)
-
-          ;; Terminal
-          (evil-leader/set-key
-            "s" 'ansi-term)
-
-          ;; Eval buffer
-          (evil-leader/set-key
-	    "e" '(lambda ()
-	    (interactive)
-	    (eval-buffer)
-	    (message "Buffer evaluated")))
-
-          ;; Increase and decrease text
-          (evil-leader/set-key
-            "+" 'text-scale-increase)
-          (evil-leader/set-key
-            "-" 'text-scale-decrease)))
     #+end_src
 *** Key chord
     I am using jk to move back to normal mode
@@ -460,11 +432,9 @@
 	  (projectile-global-mode)
           (setq projectile-enable-caching t)
 	  (evil-leader/set-key
-            "a" 'helm-projectile-ag)
-	  (evil-leader/set-key
-              "t" 'projectile-find-tag)
-	  (evil-leader/set-key
-              "f" 'helm-projectile-find-file-dwim)
+           "a" 'helm-projectile-ag
+           "t" 'projectile-find-tag
+           "f" 'helm-projectile-find-file-dwim)
 	  (setq
 	    projectile-tags-command
 	    "/usr/local/bin/ctags -Re --langmap=php:.inc.module.install.php --exclude=.git --totals=yes --exclude=vendor -f TAGS")))

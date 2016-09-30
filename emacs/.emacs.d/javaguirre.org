@@ -444,7 +444,15 @@
            "f" 'helm-projectile-find-file-dwim)
 	  (setq
 	    projectile-tags-command
-	    "/usr/local/bin/ctags -Re --langmap=php:.inc.module.install.php --exclude=.git --totals=yes --exclude=vendor -f TAGS")))
+	    "/usr/local/bin/ctags -Re \
+               --langmap=php:.inc.module.install.php \
+               --extra=+fq \
+               --exclude=.git --exclude=.vagrant \
+               --exclude=locale --exclude=node_modules \
+               --exclude=.venv --exclude=media --exclude=test-data \
+               --exclude=vendor --exclude=dist \
+               --exclude=CACHE \
+               --totals=yes --exclude=vendor -f TAGS")))
     #+end_src
 *** Helm
     #+begin_src emacs-lisp

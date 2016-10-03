@@ -699,3 +699,9 @@
               (flyspell-mode t)))
 	    (setq markdown-command "pandoc --smart -f markdown -t html")))
     #+end_src
+*** NeoTree
+    #+begin_src emacs-lisp
+	(use-package neotree
+	  :ensure t
+        )
+    #+end_src

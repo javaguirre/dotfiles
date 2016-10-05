@@ -465,8 +465,8 @@
           (global-set-key (kbd "C-x C-f") 'helm-find-files)
           (global-set-key (kbd "C-x b") 'helm-buffers-list)
           (custom-set-variables
-	    '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup --ignore-case")
-	    '(helm-ag-command-option "--all-text")
+	    '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup")
+	    '(helm-ag-command-option "--all-text --case-sensitive")
 	    '(helm-ag-insert-at-point 'symbol))))
      (use-package helm-ag
        :ensure t)

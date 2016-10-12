@@ -532,6 +532,13 @@
       (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
       (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
     #+end_src
+*** Centered window mode
+    #+begin_src emacs-lisp
+     (use-package centered-window-mode
+      :ensure t
+      :config
+      (centered-window-mode t))
+    #+end_src
 *** Company mode
     Company mode
     #+begin_src emacs-lisp

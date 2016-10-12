@@ -1,4 +1,4 @@
-#+TITLE: Javier Aguirre's Emacs 24 Configuration
+#+TITLE: Javier Aguirre's Emacs 25 Configuration
 #+AUTHOR: Javier Aguirre
 #+EMAIL: hello@javaguirre.net
 #+OPTIONS: toc:3 num:nil

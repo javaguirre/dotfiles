@@ -428,8 +428,11 @@
     (use-package flycheck
       :ensure t
       :config
-      (add-hook 'after-init-hook #'global-flycheck-mode)
-        '(flycheck-display-errors-delay 1))
+      (progn
+       (add-hook 'after-init-hook #'global-flycheck-mode)
+        '(flycheck-display-errors-delay 0.5))
+       (setq flycheck-check-syntax-automatically '(save))
+      )
     #+end_src
 *** Projectile
     #+begin_src emacs-lisp

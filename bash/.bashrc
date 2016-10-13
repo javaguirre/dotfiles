@@ -36,3 +36,5 @@ function git_count { git log --numstat --pretty="%H" --author="$1" | awk 'NF==3 
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 #LANG=C pulseaudio -vvvv --log-time=1 > ~/pulseverbose.log 2>&1
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

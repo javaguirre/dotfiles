@@ -62,3 +62,5 @@ else
 fi
 
 unset GREP_OPTIONS
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

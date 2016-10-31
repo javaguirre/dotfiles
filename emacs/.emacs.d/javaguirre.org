@@ -427,12 +427,7 @@
     #+begin_src emacs-lisp
     (use-package flycheck
       :ensure t
-      :config
-      (progn
-       (add-hook 'after-init-hook #'global-flycheck-mode)
-        '(flycheck-display-errors-delay 0.5))
-       (setq flycheck-check-syntax-automatically '(save))
-      )
+      :init (global-flycheck-mode))
     #+end_src
 *** Projectile
     #+begin_src emacs-lisp

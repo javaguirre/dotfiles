@@ -15,6 +15,7 @@ emacs/.emacs.d/eshell/
 emacs/.emacs.d/.emacs.desktop
 emacs/.emacs.d/.emacs.desktop.lock
 emacs/.emacs.d/url/
+emacs/.emacs.d/.python-environments/
 
 # TMUX
 tmux/.tmux/

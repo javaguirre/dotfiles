@@ -296,7 +296,7 @@
            "+"  'text-scale-increase
            "-"  'text-scale-decrease
            "z"  'hs-toggle-hiding
-           "x"  'occur)
+           "x"  'helm-occur)
 
           ;; ORG
           (evil-leader/set-key-for-mode 'org

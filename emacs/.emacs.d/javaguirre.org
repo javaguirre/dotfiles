@@ -285,16 +285,18 @@
 	              (interactive)
 	              (eval-buffer)
 	              (message "Buffer evaluated"))
-           "m"  'magit-status
+           "n"  'next-error
+           "m"  'previous-error
            "r"  'helm-recentf
-           "s"  'ansi-term
+           "s"  'magit-status
            "w"  'ffap-other-window
            "\\" 'evilnc-comment-operator
            "|"  'split-window-right
            "-"  'split-window-below
            "+"  'text-scale-increase
            "-"  'text-scale-decrease
-           "z"  'hs-toggle-hiding)
+           "z"  'hs-toggle-hiding
+           "x"  'occur)
 
           ;; ORG
           (evil-leader/set-key-for-mode 'org

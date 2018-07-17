@@ -15,19 +15,19 @@ ZSH_THEME="javaguirre"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="false"
 
 # Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -51,9 +51,9 @@ MODE_INDICATOR="%{$fg_bold[white]%}[%{$fg[green]%} NORMAL %{$fg_bold[white]%}]%{
 KEYTIMEOUT=1
 
 # Keychain SSH key reminder
-if command -v keychain >/dev/null; then
-  eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
-fi
+# if command -v keychain >/dev/null; then
+#   eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
+# fi
 
 if [ -n "$TMUX" ]; then
     export TERM=screen-256color
@@ -64,3 +64,9 @@ fi
 unset GREP_OPTIONS
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools

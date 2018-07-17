@@ -1,4 +1,3 @@
-alias ls='ls --color=auto'
 alias grep='grep --colour'
 alias cleanmails='sudo postsuper -d ALL'
 alias shutit='sudo shutdown -h now'

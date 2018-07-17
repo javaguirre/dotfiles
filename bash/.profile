@@ -20,19 +20,17 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 
-ANDROID_SDK="$HOME/apps/android-sdk-linux"
-ANDROID_NDK="$HOME/apps/android-ndk-r8"
-export ANDROID_HOME=/home/javaguirre/apps/android-sdk-linux/
 export NODE_MODULES="$HOME/node_modules/.bin"
 export COFFEEPATH=/usr/lib/coffee-script/bin/
-export GOPATH=$HOME/code/go
+export GOPATH=$HOME/Code/go
 export GOROOT=/usr/local/opt/go/libexec
 export PYTHONSTARTUP=$HOME/.pythonrc
 export RBENV="$HOME/.rbenv/bin"
-export PATH=$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$GOROOT/bin":"$COFFEEPATH":"$NODE_MODULES":$GOPATH/bin:"$ANDROID_SDK/platform-tools"
-export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
+export PATH=$PATH:"$HOME/.gem/ruby/1.9.1/bin":"/usr/share/java/apache-ant/bin":"$GOROOT/bin":"$COFFEEPATH":"$NODE_MODULES":$GOPATH/bin:"/Users/javaguirre/bin"
+export JAVA_HOME='/Library/Java/Home'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+export PATH="$HOME/.cargo/bin:$PATH"

@@ -1,0 +1,201 @@
+// Place your settings in this file to overwrite the default settings
+{
+"editor.fontFamily": "Mononoki, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+"editor.fontSize": 15,
+"editor.parameterHints": false,
+"terminal.integrated.fontSize": 14,
+"terminal.integrated.fontFamily": "PT Mono, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+"terminal.explorerKind": "external",
+"terminal.external.osxExec": "iTerm.app",
+"workbench.iconTheme": "material-icon-theme",
+"vim.startInInsertMode": false,
+"docker.dockerComposeBuild": false,
+"docker.dockerComposeDetached": false,
+"vim.useSystemClipboard": true,
+"vim.insertModeKeyBindings": [
+    {
+        "before": ["j","k"],
+        "after": ["<Esc>"]
+    }
+],
+"vim.normalModeKeyBindings": [
+    {
+        "before": ["leader", "a"],
+        "after": [],
+        "commands": [
+            {
+                "command": "workbench.view.search",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "b"],
+        "after": [],
+        "commands": [
+            {
+                "command": "workbench.action.quickOpen",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "c"],
+        "after": [],
+        "commands": [
+            {
+                "command": "editor.action.commentLine",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "e"],
+        "after": [],
+        "commands": [
+            {
+                "command": "workbench.actions.view.problems",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "f"],
+        "after": [],
+        "commands": [
+            {
+                "command": "workbench.action.quickOpen",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "p"],
+        "after": [],
+        "commands": [
+            {
+                "command": "workbench.action.showCommands",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "l"],
+        "after": [],
+        "commands": [
+            {
+                "command": "workbench.action.gotoLine",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "n"],
+        "after": [],
+        "commands": [
+            {
+                "command": "editor.action.marker.next",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "r"],
+        "after": [],
+        "commands": [
+            {
+                "command": "editor.action.rename",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "t"],
+        "after": [],
+        "commands": [
+            {
+                "command": "workbench.action.showAllSymbols",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "x"],
+        "after": [],
+        "commands": [
+            {
+                "command": "workbench.action.gotoSymbol",
+                "args": []
+            }
+        ]
+    },
+    {
+        "before": ["leader", "leader"],
+        "after": [],
+        "commands": [
+            {
+                "command": "editor.action.commentLine",
+                "args": []
+            }
+        ]
+    }
+],
+"vim.visualModeKeyBindings": [
+    {
+        "before": ["leader", "leader"],
+        "after": [],
+        "commands": [
+            {
+                "command": "editor.action.commentLine",
+                "args": []
+            }
+        ]
+    }
+],
+"vim.statusBarColorControl": true,
+"files.trimTrailingWhitespace": true,
+"files.insertFinalNewline": false,
+"editor.minimap.enabled": false,
+"workbench.colorTheme": "Paper Dark",
+"editor.rulers": [80],
+"explorer.confirmDelete": false,
+"window.zoomLevel": 0,
+"gitlens.keymap": "chorded",
+"gitlens.explorers.avatars": false,
+"gitlens.codeLens.enabled": false,
+"gitlens.currentLine.enabled": false,
+"gitlens.hovers.currentLine.over": "line",
+"gitlens.hovers.enabled": false,
+"gitlens.recentChanges.highlight.locations": [
+    "gutter",
+    "overview"
+],
+"explorer.confirmDragAndDrop": false,
+"gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true
+},
+"java.home": "/Library/Java/Home",
+"workbench.colorCustomizations": {
+    "terminal.background": "#222222",
+    "terminal.foreground": "#f5f1f1",
+    "[Paper Dark]": {
+        "panel.background": "#555555",
+        "sideBar.background": "#444444",
+        "editor.background": "#222222"
+    },
+    "[Paper White]": {
+        "editor.lineHighlightBackground": "#fff",
+        "editor.lineHighlightBorder": "#aeccaa77"
+    }
+},
+"git.autofetch": true,
+"gitlens.historyExplorer.enabled": true,
+"java.errors.incompleteClasspath.severity": "ignore"
+}

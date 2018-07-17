@@ -69,6 +69,7 @@
     #+begin_src emacs-lisp
       (setq inhibit-splash-screen t
             inhibit-startup-screen t
+            window-combination-resize t
             visible-bell nil
             ring-bell-function 'ignore
             echo-keystrokes 0.1
@@ -90,7 +91,7 @@
 *** Font
     Font selection
     #+begin_src emacs-lisp
-      (setq javaguirre-font  "Operator Mono-14")
+      (setq javaguirre-font  "Operator Mono Book-14")
       (add-to-list 'default-frame-alist `(font . ,javaguirre-font))
       (set-face-attribute 'default t :font javaguirre-font)
     #+end_src
@@ -287,7 +288,7 @@
 	              (eval-buffer)
 	              (message "Buffer evaluated"))
            "n"  'next-error
-           "m"  'previous-error
+           "m"  'helm-M-x
            "r"  'helm-recentf
            "s"  'magit-status
            "v"  'magit-blame
@@ -298,7 +299,7 @@
            "+"  'text-scale-increase
            "-"  'text-scale-decrease
            "z"  'hs-toggle-hiding
-           "x"  'helm-occur)
+           "x"  'helm-semantic-or-imenu)
 
           ;; ORG
           (evil-leader/set-key-for-mode 'org
@@ -729,11 +730,6 @@
     #+end_src
 
 ** Other modes
-*** NeoTree
-    #+begin_src emacs-lisp
-	(use-package neotree
-	  :ensure t)
-    #+end_src
 *** Workaround
     #+begin_src emacs-lisp
     (defun split-window-right-ignore (&optional size)
@@ -741,4 +737,21 @@
 
     (advice-add 'split-window-right :filter-args
                 'split-window-right-ignore)
+    #+end_src
+
+*** NeoTree
+    #+begin_src emacs-lisp
+	(use-package neotree
+	 :ensure t
+         :config
+         (progn
+          (add-hook 'neotree-mode-hook
+            (lambda ()
+              (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-quick-look)
+              (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+              (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
+          (setq projectile-switch-project-action 'neotree-projectile-action)
+          (setq neo-smart-open t)))
     #+end_src

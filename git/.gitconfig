@@ -25,3 +25,7 @@
     tool = default-difftool
 [difftool "default-difftool"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false

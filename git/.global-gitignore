@@ -12,3 +12,4 @@ TAGS
 \#*\#
 projectile.cache
 .projectile
+.env

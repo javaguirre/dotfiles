@@ -1,0 +1,2 @@
+# Disable Ghostty auto title so zsh script controls it
+shell-integration-features = no-title

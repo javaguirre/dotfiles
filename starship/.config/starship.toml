@@ -1,0 +1,95 @@
+# Starship prompt configuration
+# Docs: https://starship.rs/config/
+
+# Global prompt format: single line plus prompt character.
+# Adjust the order by reordering modules below.
+format = "$directory$git_branch$git_status$nodejs$python$docker_context$cmd_duration$line_break$character"
+
+# Add a blank line before the prompt (set to false to remove spacing)
+add_newline = true
+
+# Timeout (ms) for scanning repo / runtimes
+scan_timeout = 50
+
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+vicmd_symbol = "[V](bold yellow) "
+
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+style = "bold blue"
+read_only = " "
+
+[git_branch]
+format = "[$symbol$branch]($style)"
+symbol = " "
+style = "bold magenta"
+truncation_length = 30
+
+[git_status]
+conflicted = "✖"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+up_to_date = ""
+untracked = "…"
+stashed = "≡"
+modified = ""
+staged = "●"
+renamed = "»"
+deleted = "✘"
+style = "bold yellow"
+format = "[$all_status$ahead_behind]($style) "
+
+[cmd_duration]
+min_time = 2000 # show if command took >2s
+format = "⏱  [$duration]($style) "
+style = "bold yellow"
+
+[nodejs]
+format = "via [⬢ $version]($style) "
+style = "bold green"
+detect_files = ["package.json", ".nvmrc", "pnpm-lock.yaml", "yarn.lock"]
+
+[python]
+format = "via [Py $version]($style) [($virtualenv)](dimmed) "
+style = "bold yellow"
+python_binary = "python3"
+
+[docker_context]
+format = "via [🐳 $context]($style) "
+style = "bold blue"
+only_with_files = true
+
+
+# Uncomment to always show time
+# [time]
+# disabled = false
+# format = "[ $time]($style) "
+# time_format = "%H:%M:%S"
+# style = "dimmed white"
+
+[package]
+disabled = true
+
+[battery]
+disabled = true
+
+# Compact the prompt when commands fail frequently; shows exit code.
+[status]
+format = "[$symbol$status]($style) "
+symbol = "✘ "
+style = "bold red"
+disabled = true
+
+# Optional: show hostname only over SSH
+[hostname]
+ssh_symbol = " "
+format = "[$ssh_symbol$hostname]($style) "
+style = "bold dimmed green"
+disabled = false
+
+# Disable modules you don't use by setting `disabled = true` in them.
+# Remove icons if your font doesn't support Nerd Font glyphs.

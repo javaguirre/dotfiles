@@ -1,0 +1,27 @@
+[flags]
+rate = 2000            # Refresh every 2s (lower CPU)
+color = "nord"         # Calm theme (change to gruvbox / default if preferred)
+mem_as_value = true     # Show total memory as values not %
+process_memory_as_value = true  # Show per‑process memory as values
+hide_table_gap = true
+process_command = true  # Show full command line
+# tree = false         # (Implicit) we want flat list for quick top memory users
+# dot_marker = false   # Keep default braille for clarity (fewer writes than dots actually)
+
+# Layout: CPU + Memory + Disk(I/O) charts (stacked) over large process table
+[[row]]
+ratio = 3
+  [[row.child]]
+  type = "cpu"
+  [[row.child]]
+  type = "mem"
+  [[row.child]]
+  type = "disk"
+
+[[row]]
+ratio = 7
+  [[row.child]]
+  type = "proc"
+  default = true
+  # show_thread_names = false
+  # tree = false

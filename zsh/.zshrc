@@ -133,3 +133,19 @@ add-zsh-hook preexec _preexec_temp_title
 _update_terminal_title
 
 # (Removed attention pattern watch & bell block for performance)
+
+# --- Force block cursor + color every prompt (override any program changes) ---
+function _force_block_cursor() {
+  # 2 => steady block cursor (DECSCUSR), then OSC 12 sets cursor color (xterm sequence many terminals support)
+  printf '\e[2 q\033]12;#00ff5f\007'
+}
+add-zsh-hook precmd _force_block_cursor
+if (( $+precmd_functions )); then
+  precmd_functions=(${precmd_functions:#_force_block_cursor} ${precmd_functions} _force_block_cursor)
+fi
+
+# Ensure cursor stays block across vi-mode and keymap switches
+if [[ -o interactive ]]; then
+  zle -N zle-line-init _force_block_cursor
+  zle -N zle-keymap-select _force_block_cursor
+fi

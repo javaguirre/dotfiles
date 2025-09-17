@@ -1,2 +1,6 @@
 # Disable Ghostty auto title so zsh script controls it
-shell-integration-features = no-title
+shell-integration-features = no-title,no-cursor
+
+# Cursor customization
+cursor-style = block
+cursor-color = "#00ff5f"

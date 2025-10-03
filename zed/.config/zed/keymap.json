@@ -1,0 +1,66 @@
+[
+  // Insert mode: jk to escape
+  {
+    "context": "VimControl && VimInsert && !menu",
+    "bindings": {
+      "j k": "vim::NormalBefore"
+    }
+  },
+
+  // Normal mode leader bindings (backslash as leader key)
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // \a: Search in project
+      "\\ a": "pane::DeploySearch",
+
+      // \>: Focus terminal
+      "\\ shift-.": "terminal_panel::ToggleFocus",
+
+      // \j: Focus terminal (alternative)
+      "\\ j": "terminal_panel::ToggleFocus",
+
+      // \b: Quick open (file finder)
+      "\\ b": "file_finder::Toggle",
+
+      // \c: Toggle line comment
+      "\\ c": "editor::ToggleComments",
+
+      // \d: Format document
+      "\\ d": "editor::Format",
+
+      // \e: Show problems/diagnostics
+      "\\ e": "diagnostics::Deploy",
+
+      // \f: Quick open (file finder)
+      "\\ f": "file_finder::Toggle",
+
+      // \p: Command palette
+      "\\ p": "command_palette::Toggle",
+
+      // \r: Rename symbol
+      "\\ r": "editor::Rename",
+
+      // \t: Show all symbols
+      "\\ t": "project_symbols::Toggle",
+
+      // \x: Show document symbols
+      "\\ x": "outline::Toggle",
+
+      // \\: Toggle line comment
+      "\\ \\": "editor::ToggleComments"
+    }
+  },
+
+  // Visual mode leader bindings
+  {
+    "context": "VimControl && vim_mode == visual && !menu",
+    "bindings": {
+      // \\: Toggle line comment in visual mode
+      "\\ \\": "editor::ToggleComments",
+
+      // \c: Toggle line comment in visual mode
+      "\\ c": "editor::ToggleComments"
+    }
+  }
+]
